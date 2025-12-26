@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Магазин на диване - EdTech 2025</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #1a0033 0%, #330066 25%, #003366 50%, #001a4d 75%, #330033 100%);
+            background-attachment: fixed;
+            color: #fff;
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                repeating-linear-gradient(0deg,
+                    rgba(255, 0, 255, 0.03),
+                    rgba(255, 0, 255, 0.03) 1px,
+                    transparent 1px,
+                    transparent 2px);
+            background-size: 100% 2px;
+            pointer-events: none;
+            z-index: 999;
+            animation: tvGlitchRare 20s infinite;
+        }
+
+        /* МЕРЦАНИЕ И ГЛИТЧИ */
+        @keyframes flicker {
+
+            0%,
+            100% {
+                opacity: 1;
+                text-shadow: 0 0 10px rgba(255, 255, 0, 0.8);
+            }
+
+            50% {
+                opacity: 0.7;
+                text-shadow: 0 0 20px rgba(255, 0, 0, 0.6);
+            }
+        }
+
+        @keyframes glitch-anim-1 {
+            0% {
+                clip-path: polygon(0% 0%, 100% 0%, 100% 5%, 0% 10%);
+                transform: translate(-2px, -2px);
+            }
+
+            20% {
+                clip-path: polygon(0% 15%, 100% 20%, 100% 30%, 0% 25%);
+                transform: translate(2px, 2px);
+            }
+
+            40% {
+                clip-path: polygon(0% 40%, 100% 35%, 100% 50%, 0% 45%);
+                transform: translate(-3px, 1px);
+            }
+
+            60% {
+                clip-path: polygon(0% 60%, 100% 65%, 100% 75%, 0% 70%);
+                transform: translate(1px, -2px);
+            }
+
+            80% {
+                clip-path: polygon(0% 85%, 100% 80%, 100% 95%, 0% 90%);
+                transform: translate(-1px, 2px);
+            }
+
+            100% {
+                clip-path: polygon(0% 0%, 100% 0%, 100% 5%, 0% 10%);
+                transform: translate(-2px, -2px);
+            }
+        }
+
+        @keyframes glitch-anim-2 {
+            0% {
+                clip-path: polygon(0% 10%, 100% 5%, 100% 15%, 0% 20%);
+                transform: translate(2px, 2px);
+            }
+
+            20% {
+                clip-path: polygon(0% 30%, 100% 35%, 100% 45%, 0% 40%);
+                transform: translate(-2px, -2px);
+            }
+
+            40% {
+                clip-path: polygon(0% 50%, 100% 55%, 100% 65%, 0% 60%);
+                transform: translate(2px, -3px);
+            }
+
+            60% {
+                clip-path: polygon(0% 70%, 100% 75%, 100% 85%, 0% 80%);
+                transform: translate(-2px, 1px);
+            }
+
+            80% {
+                clip-path: polygon(0% 90%, 100% 95%, 100% 100%, 0% 100%);
+                transform: translate(1px, 2px);
+            }
+
+            100% {
+                clip-path: polygon(0% 10%, 100% 5%, 100% 15%, 0% 20%);
+                transform: translate(2px, 2px);
+            }
+        }
+
+        @keyframes tvGlitchRare {
+
+            0%,
+            5% {
+                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+                transform: translate(0, 0);
+                filter: brightness(1) contrast(1);
+            }
+
+            5%,
+            10% {
+                clip-path: polygon(0 2%, 100% 0%, 100% 95%, 0 98%);
+                transform: translate(-3px, 2px);
+                filter: brightness(0.8) contrast(1.5);
+            }
+
+            10%,
+            15% {
+                clip-path: polygon(0 5%, 100% 3%, 100% 97%, 0 95%);
+                transform: translate(2px, -3px);
+                filter: brightness(1.2) contrast(1.3);
+            }
+
+            15%,
+            20% {
+                clip-path: polygon(0 0%, 100% 4%, 100% 96%, 0 100%);
+                transform: translate(-1px, 1px);
+                filter: brightness(0.9) contrast(1.2);
+            }
+
+            20%,
+            100% {
+                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+                transform: translate(0, 0);
+                filter: brightness(1) contrast(1);
+            }
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        /* ===== КОНТЕЙНЕР ===== */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* ===== ЗАГОЛОВОК ===== */
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .header h1 {
+            font-size: 48px;
+            color: #ffff00;
+            margin-bottom: 15px;
+            text-shadow:
+                3px 3px 0 rgba(0, 0, 0, 0.9),
+                0 0 20px rgba(255, 255, 0, 0.6);
+            letter-spacing: 2px;
+            animation: flicker 3s ease-in-out infinite;
+        }
+
+        .header p {
+            font-size: 22px;
+            color: #00ffff;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.6);
+            margin-bottom: 10px;
+        }
+
+        .header .subtitle {
+            font-size: 18px;
+            color: #ffdd00;
+            font-style: italic;
+        }
+
+        /* ===== ЛОТ (КАРТОЧКА) ===== */
+        .lot-section {
+            display: grid;
+            grid-template-columns: 420px 1fr;
+            gap: 50px;
+            margin-bottom: 80px;
+            align-items: flex-start;
+            padding: 40px 0;
+            border-bottom: 2px solid rgba(255, 255, 0, 0.1);
+        }
+
+        .lot-section:last-child {
+            border-bottom: none;
+        }
+
+        /* ===== КАРТОЧКА (ПОЛАРОИД) ===== */
+        .card {
+            position: relative;
+            width: 420px;
+            height: 500px;
+            background: linear-gradient(135deg, #d4af37 0%, #c9a961 50%, #b8860b 100%);
+            padding: 30px;
+            box-shadow:
+                0 20px 60px rgba(0, 0, 0, 0.8),
+                0 0 40px rgba(212, 175, 55, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            display: flex;
+            flex-direction: column;
+            filter: drop-shadow(15px 15px 30px rgba(0, 0, 0, 0.9));
+            transform: perspective(1000px) rotateY(-3deg) rotateX(1deg);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: perspective(1000px) rotateY(0deg) rotateX(0deg) translateY(-10px);
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                repeating-linear-gradient(0deg,
+                    rgba(0, 0, 0, 0.05),
+                    rgba(0, 0, 0, 0.05) 1px,
+                    transparent 1px,
+                    transparent 2px);
+            pointer-events: none;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 1;
+        }
+
+        .card-lot {
+            font-family: 'Lucida Handwriting', 'Comic Sans MS', cursive;
+            font-size: 24px;
+            font-style: italic;
+            color: rgba(0, 0, 0, 0.7);
+            font-weight: bold;
+            text-shadow: 2px 2px 0 rgba(255, 255, 255, 0.6);
+            letter-spacing: 2px;
+        }
+
+        .card-number {
+            font-family: 'Lucida Handwriting', 'Comic Sans MS', cursive;
+            font-size: 42px;
+            font-style: italic;
+            color: rgba(0, 0, 0, 0.7);
+            font-weight: bold;
+            text-shadow: 3px 3px 0 rgba(255, 255, 255, 0.6);
+        }
+
+        .card-content-box {
+            background: linear-gradient(135deg, #e0e0e0 0%, #f5f5f5 100%);
+            flex: 1;
+            padding: 0;
+            margin-bottom: 20px;
+            border: none;
+            box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .card-content-emoji {
+            font-size: 80px;
+            text-align: center;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 15px;
+            border-top: 2px solid rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 1;
+        }
+
+        .card-footer-text {
+            font-family: 'Lucida Handwriting', 'Comic Sans MS', cursive;
+            font-size: 16px;
+            color: rgba(0, 0, 0, 0.7);
+            font-style: italic;
+            font-weight: bold;
+            text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.5);
+            letter-spacing: 1px;
+        }
+
+        .card-price {
+            font-family: 'Lucida Handwriting', 'Comic Sans MS', cursive;
+            font-size: 36px;
+            font-weight: bold;
+            color: rgba(0, 0, 0, 0.8);
+            text-shadow: 3px 3px 0 rgba(255, 255, 255, 0.6);
+        }
+
+        /* ===== КОНТЕНТ ЛОТА ===== */
+        .lot-content {
+            padding: 20px 0;
+        }
+
+        .lot-content h2 {
+            font-size: 36px;
+            color: #ffff00;
+            margin-bottom: 20px;
+            text-shadow:
+                3px 3px 0 rgba(0, 0, 0, 0.9),
+                0 0 20px rgba(255, 255, 0, 0.6);
+            letter-spacing: 1px;
+            animation: flicker 3s ease-in-out infinite;
+        }
+
+        .lot-content p {
+            font-size: 16px;
+            color: #e0e0e0;
+            margin-bottom: 15px;
+            line-height: 1.8;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9);
+        }
+
+        .lot-content strong {
+            color: #ffff00;
+            text-shadow: 0 0 10px rgba(255, 255, 0, 0.6);
+        }
+
+        .feature-list {
+            margin: 15px 0;
+            padding-left: 30px;
+        }
+
+        .feature-list li {
+            margin-bottom: 10px;
+            color: #e0e0e0;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9);
+        }
+
+        .feature-list li::marker {
+            color: #00ffff;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
+        }
+
+        .highlight {
+            background: linear-gradient(45deg, #ff00ff, #ff0080);
+            color: #fff;
+            padding: 6px 14px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 16px;
+            box-shadow: 0 0 20px rgba(255, 0, 255, 0.6);
+            display: inline-block;
+            margin: 0 4px;
+            text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.8);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-weight: bold;
+            margin: 10px 0;
+            font-size: 14px;
+            text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.8);
+        }
+
+        .status-soon {
+            background: linear-gradient(90deg, #ff6600, #ff9900);
+            color: #fff;
+            box-shadow: 0 0 20px rgba(255, 102, 0, 0.6);
+        }
+
+        .status-active {
+            background: linear-gradient(90deg, #00cc00, #00ff00);
+            color: #000;
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.6);
+        }
+
+        /* ===== ФИНАЛЬНАЯ СЕКЦИЯ ===== */
+        .final-section {
+            text-align: center;
+            margin-top: 100px;
+            padding: 60px 40px;
+            background: linear-gradient(135deg, rgba(255, 255, 0, 0.1) 0%, rgba(255, 0, 255, 0.1) 100%);
+            border: 2px solid rgba(255, 255, 0, 0.3);
+            border-radius: 10px;
+        }
+
+        .final-section h2 {
+            font-size: 42px;
+            color: #ffff00;
+            margin-bottom: 40px;
+            text-shadow:
+                3px 3px 0 rgba(0, 0, 0, 0.9),
+                0 0 20px rgba(255, 255, 0, 0.6);
+            letter-spacing: 2px;
+            animation: flicker 2.5s ease-in-out infinite;
+        }
+
+        .contact-info {
+            display: inline-block;
+            margin: 20px;
+            padding: 15px 30px;
+            background: linear-gradient(90deg, #00ffff, #00ff00);
+            color: rgba(0, 0, 0, 0.9);
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.6);
+            text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.5);
+        }
+
+        .contact-info:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 40px rgba(0, 255, 255, 1);
+        }
+
+        .order-button {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 20px 50px;
+            background: linear-gradient(135deg, #ff00ff, #ff0080);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 24px;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 40px rgba(255, 0, 255, 0.8);
+            letter-spacing: 2px;
+            text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.8);
+        }
+
+        .order-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 60px rgba(255, 0, 255, 1);
+        }
+
+        /* ===== АДАПТИВ ===== */
+        @media (max-width: 1024px) {
+            .lot-section {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                text-align: center;
+            }
+
+            .card {
+                width: 100%;
+                max-width: 400px;
+                margin: 0 auto;
+            }
+
+            .header h1 {
+                font-size: 36px;
+            }
+
+            .lot-content h2 {
+                font-size: 28px;
+            }
+
+            .container {
+                padding: 20px 15px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 28px;
+            }
+
+            .lot-content h2 {
+                font-size: 24px;
+            }
+
+            .card {
+                height: auto;
+                min-height: 400px;
+            }
+
+            .card-number {
+                font-size: 36px;
+            }
+
+            .lot-section {
+                margin-bottom: 60px;
+                padding: 20px 0;
+            }
+
+            .final-section {
+                padding: 40px 20px;
+            }
+
+            .final-section h2 {
+                font-size: 28px;
+            }
+
+            .contact-info {
+                font-size: 16px;
+                padding: 12px 24px;
+            }
+
+            .order-button {
+                padding: 15px 30px;
+                font-size: 18px;
+            }
+
+            .feature-list {
+                padding-left: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- ===== ЗАГОЛОВОК ===== -->
+        <div class="header">
+            <h1>Магазин на диване</h1>
+            <p>Праздничная распродажа 2025</p>
+            <p class="subtitle">Максимум пользы на квадратный сантиметр</p>
+        </div>
+
+        <div class="main-wrapper">
+        <!-- ===== ВЕРХНЯЯ СЕКЦИЯ: КАРТОЧКА + ТЕКСТ ===== -->
+        <div class="top-section">
+            <!-- ===== КАРТОЧКА (ПОЛАРОИД) ===== -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-lot">Лот</span>
+                    <span class="card-number">274</span>
+                </div>
+
+                <div class="card-content-box">
+                    <div class="glitch-container">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='350'%3E%3Cdefs%3E%3ClinearGradient id='grad1' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:rgb(255,0,255);stop-opacity:1' /%3E%3Cstop offset='50%25' style='stop-color:rgb(0,255,255);stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:rgb(0,255,0);stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='400' height='350' fill='url(%23grad1)'/%3E%3Ctext x='50%25' y='50%25' font-size='24' fill='white' text-anchor='middle' dominant-baseline='middle'%3EВставьте свою картинку%3C/text%3E%3C/svg%3E"
+                            alt="Изображение продукта" class="card-content-image">
+                    </div>
+                </div>
+
+                <div class="card-footer">
+                    <span class="card-footer-text">Цена в ц.е.</span>
+                    <span class="card-price">340</span>
+                </div>
+            </div>
+
+            <!-- ===== ПРАВАЯ КОЛОНКА ===== -->
+            <div class="right-content">
+                <h1 data-text="Конструктор Рассылок">Конструктор Рассылок</h1>
+
+                <div class="description">
+                    Полный функционал редактирования прямо в приложении. Никакой лишней работы в других программах!
+                </div>
+
+                <h2
+                    style="color: #00ffff; font-size: 18px; margin: 20px 0 15px 0; text-shadow: 0 0 10px rgba(0, 255, 255, 0.6);">
+                    Как это работает:</h2>
+
+                <ul class="features-list">
+                    <li>Открыли приложение</li>
+                    <li>Выбрали шаблон</li>
+                    <li>Отредактировали блоки</li>
+                    <li>Отправили в Outlook</li>
+                </ul>
+
+                <div class="description" style="margin-top: 20px;">
+                    От идеи к отправке за <span class="number-highlight">5</span> минут!<br>
+                    Всего <span class="number-highlight">4</span> простых шага
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== ИНФОРМАЦИОННАЯ ПОЛОСКА ===== -->
+        <div class="info-bar">
+            ⭐ Полный функционал редактирования прямо в приложении. Никакой лишней работы в других программах!
+        </div>
+    </div>
+
+    <!-- ===== ЛОТ 1: BotApp v.5.10 ===== -->
+    <div class="lot-section">
+        <div class="card">
+            <div class="card-header">
+                <span class="card-lot">Лот</span>
+                <span class="card-number">334</span>
+            </div>
+            <div class="card-content-box">
+                <div class="card-content-emoji">🤖</div>
+            </div>
+            <div class="card-footer">
+                <span class="card-footer-text">Версия</span>
+                <span class="card-price">5.10</span>
+            </div>
+        </div>
+
+        <div class="lot-content">
+            <h2>BotApp</h2>
+            <p><strong>Что нового, что ценного, что теперь могут наши боты</strong></p>
+
+            <p style="margin-top: 15px;"><strong>+ Конструктор для Tasks</strong></p>
+            <p>Сложность: тяжело генерить задачи для бота в формате «отправь пользователя 'Х' такое-то сообщение в
+                такое-то время»</p>
+
+            <p style="margin-top: 15px;"><strong>Обычная версия:</strong></p>
+            <ol class="feature-list">
+                <li>Зашел, заполнил шаблон</li>
+                <li>Получил готовый JSON файл</li>
+                <li>Быстро глянул – проверил</li>
+                <li>Используй, вставляя в бота</li>
+            </ol>
+
+            <p><strong>ИИ версия:</strong></p>
+            <ol class="feature-list">
+                <li>Зашел, русским языком написал что сделать</li>
+                <li>Получил JSON</li>
+                <li>Вставляй в бота</li>
+            </ol>
+
+            <p style="margin-top: 15px; font-style: italic;">В дальнейшем: просто нажал кнопку "отправить в бота" и всё!
+            </p>
+
+            <p style="margin-top: 20px;"><strong>Основной функционал:</strong></p>
+            <ul class="feature-list">
+                <li>Поддержка функционала мини-приложений</li>
+                <li>Система Plug-n-Play для модулей действий</li>
+                <li>Пользовательские счетчики</li>
+                <li>Настраиваемая форма календаря</li>
+                <li>Peer-2-peer взаимодействие между пользователями</li>
+                <li>Режим администратора в любом чат-боте</li>
+                <li>Повышенная стабильность</li>
+            </ul>
+
+            <p style="margin-top: 15px;"><strong>Бонусы:</strong></p>
+            <ul class="feature-list">
+                <li>Сервера для размещения в сети РТК ИТ (согласовано с ИБ!)</li>
+                <li>Сертификат на скидку на обучение в Школе Ботостроения</li>
+            </ul>
+
+            <span class="status-badge status-active">✓ Активно</span>
+        </div>
+    </div>
+
+    <!-- ===== ЛОТ 2: BotApp v.6.0 ===== -->
+    <div class="lot-section">
+        <div class="card">
+            <div class="card-header">
+                <span class="card-lot">Лот</span>
+                <span class="card-number">②</span>
+            </div>
+            <div class="card-content-box">
+                <div class="card-content-emoji">⚡</div>
+            </div>
+            <div class="card-footer">
+                <span class="card-footer-text">Версия</span>
+                <span class="card-price">6.0</span>
+            </div>
+        </div>
+
+        <div class="lot-content">
+            <h2>BotApp v.6.0</h2>
+            <p><strong>Полностью обновленная архитектура</strong></p>
+
+            <span class="status-badge status-soon">🔜 Доступен предзаказ</span>
+
+            <p style="margin-top: 15px;"><strong>Главные улучшения:</strong></p>
+            <ul class="feature-list">
+                <li>Полностью обновленная архитектура</li>
+                <li>Web-интерфейс для управления планировщиком задач</li>
+                <li>Мультиканальность: интеграции с VK Messenger и Max</li>
+            </ul>
+
+            <p style="margin-top: 20px; color: #ffff00; font-weight: bold;">Скоро! Скоро! Скоро!</p>
+            <p style="color: #00ffff;">Следите за рекламой!</p>
+        </div>
+    </div>
+
+    <!-- ===== ЛОТ 3: AdaptON ===== -->
+    <div class="lot-section">
+        <div class="card">
+            <div class="card-header">
+                <span class="card-lot">Лот</span>
+                <span class="card-number">③</span>
+            </div>
+            <div class="card-content-box">
+                <div class="card-content-emoji">👥</div>
+            </div>
+            <div class="card-footer">
+                <span class="card-footer-text">Пользователи</span>
+                <span class="card-price">+4K</span>
+            </div>
+        </div>
+
+        <div class="lot-content">
+            <h2>AdaptON</h2>
+            <p><strong>Акселератор адаптации сотрудников</strong></p>
+
+            <span class="status-badge status-active">✓ Активно</span>
+
+            <p style="margin-top: 15px;"><strong>Что произошло в этом году:</strong></p>
+            <ul class="feature-list">
+                <li>Переосмыслено позиционирование продукта</li>
+                <li>Выявлены ключевые боли пользователей</li>
+                <li>Обновлен генератор ссылок-инвайтов</li>
+                <li>Автоматическое формирование списков для назначения программ адаптации</li>
+                <li>Формирование для тренера списка новичков, готовых к практикумам – одной кнопкой</li>
+            </ul>
+
+            <p style="margin-top: 15px;"><strong>Статистика:</strong></p>
+            <p><span class="highlight">+4000</span> новых пользователей</p>
+            <p><span class="highlight">+8</span> новых ролей</p>
+
+            <p style="margin-top: 15px; font-style: italic;">Скоро: функционал самостоятельной записи новичков на
+                практикумы</p>
+        </div>
+    </div>
+
+    <!-- ===== ЛОТ 4: Video SpellChecker ===== -->
+    <div class="lot-section">
+        <div class="card">
+            <div class="card-header">
+                <span class="card-lot">Лот</span>
+                <span class="card-number">④</span>
+            </div>
+            <div class="card-content-box">
+                <div class="card-content-emoji">✍️</div>
+            </div>
+            <div class="card-footer">
+                <span class="card-footer-text">ОС</span>
+                <span class="card-price">2+</span>
+            </div>
+        </div>
+
+        <div class="lot-content">
+            <h2>Video SpellChecker</h2>
+            <p><strong>Надоело долго отсматривать видео, а потом получать замечания за ошибки в титрах?</strong></p>
+
+            <p style="margin-top: 15px;">Тогда мы идем к вам!</p>
+
+            <p style="margin-top: 15px;"><strong>Возможности:</strong></p>
+            <ul class="feature-list">
+                <li>Работает на Windows и на Alt</li>
+                <li>Словари русского и английского языка</li>
+                <li>Пользовательский словарь исключений</li>
+            </ul>
+
+            <span class="status-badge status-active">✓ Активно</span>
+        </div>
+    </div>
+
+    <!-- ===== ЛОТ 5: Конструктор рассылок ===== -->
+    <div class="lot-section">
+        <div class="card">
+            <div class="card-header">
+                <span class="card-lot">Лот</span>
+                <span class="card-number">⑤</span>
+            </div>
+            <div class="card-content-box">
+                <div class="card-content-emoji">📧</div>
+            </div>
+            <div class="card-footer">
+                <span class="card-footer-text">Время</span>
+                <span class="card-price">5 мин</span>
+            </div>
+        </div>
+
+        <div class="lot-content">
+            <h2>Конструктор рассылок</h2>
+            <p><strong>Главная проблема:</strong> все блоки надо собирать самостоятельно, иногда приходится лезть в
+                табличную верстку, нужно пользоваться Figma или другим редактором картинок.</p>
+
+            <p style="margin-top: 15px;"><strong>Наше решение:</strong> удобный интерфейс с шаблонами и набором блоков,
+                которые можно добавлять, быстро убирать или объединять.</p>
+
+            <p style="margin-top: 15px;"><strong>Как работает:</strong></p>
+            <ol class="feature-list">
+                <li>Открыли приложение</li>
+                <li>Выбрали или создали свой шаблон</li>
+                <li>Отредактировали блоки прямо в приложении</li>
+                <li>Нажали "отправить в Outlook"</li>
+                <li>В сгенерированном письме всё проверили, вставили адресатов и отправили</li>
+            </ol>
+
+            <p style="margin-top: 15px;">Можно избежать работы в Figma и редакторах. В дальнейшем планируем полный
+                функционал внутри.</p>
+
+            <span class="status-badge status-active">✓ Активно</span>
+        </div>
+    </div>
+
+    <!-- ===== ЛОТ 6: Конструктор тестов ===== -->
+    <div class="lot-section">
+        <div class="card">
+            <div class="card-header">
+                <span class="card-lot">Лот</span>
+                <span class="card-number">⑥</span>
+            </div>
+            <div class="card-content-box">
+                <div class="card-content-emoji">✅</div>
+            </div>
+            <div class="card-footer">
+                <span class="card-footer-text">Формат</span>
+                <span class="card-price">SCORM</span>
+            </div>
+        </div>
+
+        <div class="lot-content">
+            <h2>Конструктор тестов</h2>
+            <p><strong>Проблема:</strong> тесты внутри системы ЛМС дают ограниченный функционал подачи обратной связи.
+            </p>
+
+            <p style="margin-top: 15px;"><strong>Наше решение:</strong> приложение на сервере, которое позволяет:</p>
+            <ul class="feature-list">
+                <li>Создавать тесты</li>
+                <li>Паковать их в SCORM пакет как курс</li>
+                <li>Загружать прямо в ЛМС</li>
+                <li>Получать расширенную обратную связь</li>
+            </ul>
+
+            <span class="status-badge status-active">✓ Активно</span>
+        </div>
+    </div>
+    
+
+    <!-- ===== ЛОТ 7: Другие боты ===== -->
+    <div class="lot-section">
+        <div class="card">
+            <div class="card-header">
+                <span class="card-lot">Лот</span>
+                <span class="card-number">⑦</span>
+            </div>
+            <div class="card-content-box">
+                <div class="card-content-emoji">🤖</div>
+            </div>
+            <div class="card-footer">
+                <span class="card-footer-text">Штук</span>
+                <span class="card-price">4+</span>
+            </div>
+        </div>
+
+        <div class="lot-content">
+            <h2>Другие боты</h2>
+
+            <p><strong>Искусство Переговоров (B2B)</strong></p>
+            <p>Теория и практика переговорных техник</p>
+
+            <p style="margin-top: 15px;"><strong>Программа ИИ-Проводники 2.0</strong></p>
+            <p>Peer-2-peer проверка домашних заданий</p>
+
+            <p style="margin-top: 15px;"><strong>Школа аналитика</strong></p>
+            <p>От новичка к аналитику с peer-review</p>
+
+            <p style="margin-top: 15px;"><strong>Букинг + Чек-листы</strong></p>
+            <p>Мини-приложения для встреч и контроля</p>
+
+            <span class="status-badge status-active">✓ Активно</span>
+        </div>
+    </div>
+
+    <!-- ===== ЛОТ 8: Робот отчетов ===== -->
+    <div class="lot-section">
+        <div class="card">
+            <div class="card-header">
+                <span class="card-lot">Лот</span>
+                <span class="card-number">⑧</span>
+            </div>
+            <div class="card-content-box">
+                <div class="card-content-emoji">📊</div>
+            </div>
+            <div class="card-footer">
+                <span class="card-footer-text">Время</span>
+                <span class="card-price">По расп.</span>
+            </div>
+        </div>
+
+        <div class="lot-content">
+            <h2>Робот отчетов</h2>
+            <p><strong>Задолбались постоянно заказывать одинаковые выгрузки из ОУ и крутить их в Excel?</strong></p>
+
+            <p style="margin-top: 15px;">Это предложение – для вас!</p>
+
+            <p style="margin-top: 15px;"><strong>Как работает:</strong></p>
+            <ul class="feature-list">
+                <li>По расписанию заказ и получение выгрузки в ОУ</li>
+                <li>Обработка отчета к нужному формату</li>
+                <li>Отправка на требуемый адрес или в папку</li>
+            </ul>
+
+            <p style="margin-top: 15px; font-style: italic;">Скоро: получение данных напрямую из ЦХД</p>
+
+            <span class="status-badge status-active">✓ Активно</span>
+        </div>
+    </div>
+
+    <!-- ===== ЛОТ 9: PDF Шаблоны ===== -->
+    <div class="lot-section">
+        <div class="card">
+            <div class="card-header">
+                <span class="card-lot">Лот</span>
+                <span class="card-number">⑨</span>
+            </div>
+            <div class="card-content-box">
+                <div class="card-content-emoji">📄</div>
+            </div>
+            <div class="card-footer">
+                <span class="card-footer-text">Сертификаты</span>
+                <span class="card-price">∞</span>
+            </div>
+        </div>
+
+        <div class="lot-content">
+            <h2>Автоматическое заполнение PDF-шаблонов</h2>
+            <p><strong>Проблема:</strong> надо много сертификатов PDF на разных людей. Есть Excel и шаблон, но заполнять
+                приходится руками.</p>
+
+            <p style="margin-top: 15px;"><strong>Как работает:</strong></p>
+            <ul class="feature-list">
+                <li>Используем любой пустой PDF</li>
+                <li>Используем Excel табличку с 2 столбцами</li>
+                <li>В приложении настраиваем по позиции и цвету</li>
+                <li>Нажимаем "сгенерировать"</li>
+                <li>Получаем все сертификаты со всеми людьми</li>
+            </ul>
+
+            <p style="margin-top: 15px;">Всё кроме одного сертификата – настраиваешь один раз!</p>
+
+            <span class="status-badge status-active">✓ Активно</span>
+        </div>
+    </div>
+
+    <!-- ===== ФИНАЛЬНОЕ ПРЕДЛОЖЕНИЕ ===== -->
+    <div class="final-section">
+        <h2>Мы экономим ваше время и нервы!</h2>
+
+        <div style="font-size: 24px; margin: 30px 0; color: #00ffff; text-shadow: 0 0 10px rgba(0, 255, 255, 0.6);">
+            Выберите способ связи:
+        </div>
+
+        <a href="https://t.me/your_telegram" class="contact-info" target="_blank">
+            📱 Telegram
+        </a>
+        <br>
+        <a href="mailto:your.email@example.com" class="contact-info">
+            ✉️ Email
+        </a>
+
+        <br><br>
+
+        <a href="#" class="order-button" onclick="handleOrderClick(event)">
+            СДЕЛАТЬ ЗАКАЗ
+        </a>
+
+        <div
+            style="margin-top: 40px; font-size: 32px; color: #ffff00; text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.9), 0 0 20px rgba(255, 255, 0, 0.6); animation: flicker 2.5s ease-in-out infinite; letter-spacing: 2px;">
+            ЗВОНИТЕ ПРЯМО СЕЙЧАС!!!
+        </div>
+    </div>
+    </div>
+
+    <script>
+        // ОБРАБОТКА КНОПКИ ЗАКАЗА
+        function handleOrderClick(event) {
+            event.preventDefault();
+            alert('Спасибо за интерес! Свяжитесь с нами через Telegram или Email');
+        }
+
+        // ИНТЕРАКТИВНЫЕ ЭФФЕКТЫ
+        const cards = document.querySelectorAll('.card');
+        cards.forEach((card) => {
+            card.addEventListener('mouseenter', function () {
+                this.style.filter = 'brightness(1.1) contrast(1.2)';
+            });
+
+            card.addEventListener('mouseleave', function () {
+                this.style.filter = 'brightness(1) contrast(1)';
+            });
+        });
+    </script>
+</body>
+
+</html>

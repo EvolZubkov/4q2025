@@ -13,779 +13,6 @@
         }
 
         body {
-            font-family: 'Impact', 'Arial Black', sans-serif;
-            background: linear-gradient(135deg, #1a0033 0%, #330066 25%, #003366 50%, #001a4d 75%, #330033 100%);
-            background-attachment: fixed;
-            color: #fff;
-            line-height: 1.6;
-            overflow-x: hidden;
-            position: relative;
-        }
-
-        body::after {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image:
-                repeating-linear-gradient(0deg,
-                    rgba(255, 0, 255, 0.03),
-                    rgba(255, 0, 255, 0.03) 1px,
-                    transparent 1px,
-                    transparent 2px);
-            background-size: 100% 2px;
-            pointer-events: none;
-            z-index: 999;
-            animation: tvGlitchRare 20s infinite;
-        }
-
-        /* МЕРЦАНИЕ И ГЛИТЧИ */
-        @keyframes flicker {
-
-            0%,
-            100% {
-                opacity: 1;
-                text-shadow: 0 0 10px rgba(255, 255, 0, 0.8);
-            }
-
-            50% {
-                opacity: 0.7;
-                text-shadow: 0 0 20px rgba(255, 0, 0, 0.6);
-            }
-        }
-
-        @keyframes glitch-heavy {
-            0% {
-                transform: translate(0, 0);
-                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-            }
-
-            10% {
-                transform: translate(-4px, 2px);
-                clip-path: polygon(0 5%, 100% 0, 100% 95%, 0 100%);
-            }
-
-            20% {
-                transform: translate(3px, -3px);
-                clip-path: polygon(0 0, 100% 8%, 100% 100%, 0 92%);
-            }
-
-            30% {
-                transform: translate(-2px, 1px);
-                clip-path: polygon(0 3%, 100% 2%, 100% 98%, 0 97%);
-            }
-
-            40% {
-                transform: translate(4px, -2px);
-                clip-path: polygon(0 10%, 100% 5%, 100% 95%, 0 90%);
-            }
-
-            50% {
-                transform: translate(-1px, -4px);
-                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-            }
-
-            60% {
-                transform: translate(2px, 3px);
-                clip-path: polygon(0 4%, 100% 6%, 100% 94%, 0 96%);
-            }
-
-            70% {
-                transform: translate(-3px, -1px);
-                clip-path: polygon(0 2%, 100% 0, 100% 100%, 0 98%);
-            }
-
-            80% {
-                transform: translate(1px, 2px);
-                clip-path: polygon(0 8%, 100% 7%, 100% 93%, 0 92%);
-            }
-
-            100% {
-                transform: translate(0, 0);
-                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-            }
-        }
-
-        @keyframes glitch-anim-1 {
-            0% {
-                clip-path: polygon(0% 0%, 100% 0%, 100% 5%, 0% 10%);
-                transform: translate(-2px, -2px);
-            }
-
-            20% {
-                clip-path: polygon(0% 15%, 100% 20%, 100% 30%, 0% 25%);
-                transform: translate(2px, 2px);
-            }
-
-            40% {
-                clip-path: polygon(0% 40%, 100% 35%, 100% 50%, 0% 45%);
-                transform: translate(-3px, 1px);
-            }
-
-            60% {
-                clip-path: polygon(0% 60%, 100% 65%, 100% 75%, 0% 70%);
-                transform: translate(1px, -2px);
-            }
-
-            80% {
-                clip-path: polygon(0% 85%, 100% 80%, 100% 95%, 0% 90%);
-                transform: translate(-1px, 2px);
-            }
-
-            100% {
-                clip-path: polygon(0% 0%, 100% 0%, 100% 5%, 0% 10%);
-                transform: translate(-2px, -2px);
-            }
-        }
-
-        @keyframes glitch-anim-2 {
-            0% {
-                clip-path: polygon(0% 10%, 100% 5%, 100% 15%, 0% 20%);
-                transform: translate(2px, 2px);
-            }
-
-            20% {
-                clip-path: polygon(0% 30%, 100% 35%, 100% 45%, 0% 40%);
-                transform: translate(-2px, -2px);
-            }
-
-            40% {
-                clip-path: polygon(0% 50%, 100% 55%, 100% 65%, 0% 60%);
-                transform: translate(2px, -3px);
-            }
-
-            60% {
-                clip-path: polygon(0% 70%, 100% 75%, 100% 85%, 0% 80%);
-                transform: translate(-2px, 1px);
-            }
-
-            80% {
-                clip-path: polygon(0% 90%, 100% 95%, 100% 100%, 0% 100%);
-                transform: translate(1px, 2px);
-            }
-
-            100% {
-                clip-path: polygon(0% 10%, 100% 5%, 100% 15%, 0% 20%);
-                transform: translate(2px, 2px);
-            }
-        }
-
-        @keyframes tvGlitchRare {
-
-            0%,
-            5% {
-                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-                transform: translate(0, 0);
-                filter: brightness(1) contrast(1);
-            }
-
-            5%,
-            10% {
-                clip-path: polygon(0 2%, 100% 0%, 100% 95%, 0 98%);
-                transform: translate(-3px, 2px);
-                filter: brightness(0.8) contrast(1.5);
-            }
-
-            10%,
-            15% {
-                clip-path: polygon(0 5%, 100% 3%, 100% 97%, 0 95%);
-                transform: translate(2px, -3px);
-                filter: brightness(1.2) contrast(1.3);
-            }
-
-            15%,
-            20% {
-                clip-path: polygon(0 0%, 100% 4%, 100% 96%, 0 100%);
-                transform: translate(-1px, 1px);
-                filter: brightness(0.9) contrast(1.2);
-            }
-
-            20%,
-            100% {
-                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-                transform: translate(0, 0);
-                filter: brightness(1) contrast(1);
-            }
-        }
-
-        @keyframes scrollHorizontal {
-            0% {
-                transform: translateX(-100%);
-            }
-
-            100% {
-                transform: translateX(100vw);
-            }
-        }
-
-        /* БЕГУЩИЙ ТЕКСТ БЕЗ ФОНА */
-        .scrolling-banner {
-            position: fixed;
-            top: 0;
-            left: -10vw;
-            width: 100vw;
-            height: 120px;
-            /* background: linear-gradient(90deg, 
-                #ffff00 0%, 
-                #ffdd00 25%, 
-                #ffff00 50%, 
-                #ffdd00 75%, 
-                #ffff00 100%); */
-
-            /* Поворот на 25 градусов */
-            transform: rotate(-25deg);
-
-            /* Тень для глубины */
-            /* box-shadow: 
-                0 0 40px rgba(255, 255, 0, 0.8),
-                0 10px 30px rgba(0, 0, 0, 0.9); */
-
-            z-index: 5;
-            pointer-events: none;
-            overflow: hidden;
-            padding: 20px 0;
-        }
-
-        .scrolling-banner::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            /* background: 
-                repeating-linear-gradient(
-                    90deg,
-                    rgba(0, 0, 0, 0.1),
-                    rgba(0, 0, 0, 0.1) 1px,
-                    transparent 1px,
-                    transparent 2px
-                ); */
-            pointer-events: none;
-        }
-
-        .scrolling-banner-content {
-            position: fixed;
-            top: 0;
-            left: 0;
-            transform: none;
-            white-space: nowrap;
-            font-size: 76px;
-            font-weight: bold;
-            font-family: 'Impact', 'Arial Black', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 20px;
-
-            color: #FFD700;
-            text-shadow:
-                3px 3px 0 rgba(255, 0, 0, 0.8),
-                6px 6px 0 rgba(0, 0, 0, 0.6),
-                -2px -2px 0 rgba(255, 0, 255, 0.4);
-
-            animation: scrollHorizontal 10s linear infinite;
-            z-index: 501;
-            padding-top: 20px;
-        }
-
-        .scrolling-banner-content::before {
-            content: 'ПРАЗДНИЧНАЯ РАСПРОДАЖА';
-            position: fixed;
-            top: 0;
-            left: 0;
-            transform: none;
-            color: #ff0000;
-            opacity: 0.6;
-            text-shadow: -2px 0 #ffff00;
-            animation: scrollHorizontal 10s linear infinite;
-            z-index: 500;
-            padding-top: 20px;
-        }
-
-        .scrolling-banner-content::after {
-            content: 'ПРАЗДНИЧНАЯ РАСПРОДАЖА';
-            position: fixed;
-            top: 0;
-            left: 0;
-            transform: none;
-            color: #ff00ff;
-            opacity: 0.6;
-            text-shadow: 2px 0 #00ffff;
-            animation: scrollHorizontal 10s linear infinite;
-            z-index: 500;
-            padding-top: 20px;
-        }
-
-        /* Старая colorShift анимация удалена */
-
-        /* КОНТЕЙНЕР */
-        /* .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-            position: relative;
-            z-index: 2;
-        } */
-
-        /* ===== ИНТРО С ВИДЕО ===== */
-        .intro-section {
-            position: relative;
-            width: 100vw;
-            height: 900px;
-            margin: 0 calc(-50vw + 50%);
-            margin-bottom: 40px;
-            border: none;
-            background: #000;
-            overflow: hidden;
-            box-shadow:
-                0 0 30px rgba(0, 0, 0, 0.9),
-                0 0 60px rgba(255, 0, 255, 0.2);
-        }
-
-        .intro-section video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            filter: contrast(1.2) brightness(0.9);
-        }
-
-        .intro-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background:
-                repeating-linear-gradient(0deg,
-                    rgba(0, 0, 0, 0.15),
-                    rgba(0, 0, 0, 0.15) 1px,
-                    transparent 1px,
-                    transparent 2px);
-            pointer-events: none;
-            animation: tvScan 0.15s infinite;
-        }
-
-        /* ===== ЛОТЫ ===== */
-        .lot-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 40px;
-            margin-bottom: 50px;
-        }
-
-        /* ОБЪЁМНАЯ ТЕНЬ БЛОКА */
-        .lot {
-            position: relative;
-            padding: 30px;
-            border: none;
-            background: transparent;
-            background-size: 200% 200%;
-            background-attachment: fixed;
-            min-height: auto;
-            transform-style: preserve-3d;
-            margin-bottom: 40px;
-        }
-
-        .lot.glitch {
-            animation: none;
-        }
-
-        .lot::before {
-            content: '';
-            position: absolute;
-            top: -6px;
-            left: -6px;
-            right: -6px;
-            bottom: -6px;
-            background: inherit;
-            z-index: -1;
-            opacity: 0;
-            filter: blur(2px);
-        }
-
-        .lot-number {
-            position: absolute;
-            top: 15px;
-            right: 20px;
-            font-size: 48px;
-            font-weight: bold;
-            opacity: 0;
-            text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.5);
-            display: none;
-        }
-
-        .lot-title {
-            font-size: 78px;
-            margin-bottom: 25px;
-            text-shadow:
-                3px 3px 0 rgba(0, 0, 0, 0.9),
-                6px 6px 0 rgba(255, 255, 255, 0.2),
-                -2px -2px 0 rgba(255, 0, 255, 0.5);
-            animation: flicker 3s ease-in-out infinite;
-            letter-spacing: 2px;
-            filter: brightness(1.2) contrast(1.3) saturate(1.4);
-            position: relative;
-        }
-
-        .lot-title::before {
-            content: attr(data-text);
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            color: #ff00ff;
-            z-index: -1;
-            text-shadow:
-                -2px 0 #00ffff,
-                2px 0 #ff00ff;
-            opacity: 0.8;
-            animation: glitch-anim-1 0.8s infinite;
-            clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
-        }
-
-        .lot-title::after {
-            content: attr(data-text);
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            color: #00ffff;
-            z-index: -1;
-            text-shadow:
-                -2px 0 #ff00ff,
-                2px 0 #00ffff;
-            opacity: 0.8;
-            animation: glitch-anim-2 0.8s infinite;
-            clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
-        }
-
-        .lot-content {
-            font-size: 36px;
-            line-height: 1.8;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
-            background: transparent;
-            padding: 20px 0;
-            border: none;
-            filter: brightness(1.1) contrast(1.1);
-        }
-
-        .lot-price {
-            font-size: 36px;
-            margin-top: 20px;
-            font-weight: bold;
-            color: #ffff00;
-            text-shadow:
-                2px 2px 0 #ff0000,
-                4px 4px 0 rgba(0, 0, 0, 0.8);
-            animation: flicker 2s ease-in-out infinite;
-        }
-
-        /* ВАРИАНТЫ ЛОТОВ - убираем рамки и фоны */
-        .lot:nth-child(1) {
-            background: transparent;
-            border-color: transparent;
-            box-shadow: none;
-        }
-
-        .lot:nth-child(2) {
-            background: transparent;
-            border-color: transparent;
-            box-shadow: none;
-        }
-
-        .lot:nth-child(3) {
-            background: transparent;
-            border-color: transparent;
-            box-shadow: none;
-        }
-
-        .lot:nth-child(4) {
-            background: transparent;
-            border-color: transparent;
-            box-shadow: none;
-        }
-
-        .lot:nth-child(5) {
-            background: transparent;
-            border-color: transparent;
-            box-shadow: none;
-        }
-
-        .lot:nth-child(6) {
-            background: transparent;
-            border-color: transparent;
-            box-shadow: none;
-        }
-
-        .lot:nth-child(7) {
-            background: transparent;
-            border-color: transparent;
-            box-shadow: none;
-        }
-
-        .lot:nth-child(8) {
-            background: transparent;
-            border-color: transparent;
-            box-shadow: none;
-        }
-
-        .lot:nth-child(9) {
-            background: transparent;
-            border-color: transparent;
-            box-shadow: none;
-        }
-
-        /* ===== ВИДЕО В СЕРЕДИНЕ ===== */
-        .video-section {
-            position: relative;
-            width: 100vw;
-            height: 500px;
-            margin: 60px calc(-50vw + 50%);
-            border: none;
-            background: #000;
-            overflow: hidden;
-            box-shadow:
-                0 0 40px rgba(0, 0, 0, 0.9),
-                0 0 80px rgba(0, 255, 255, 0.2);
-        }
-
-        .video-section video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            filter: contrast(1.3) brightness(0.85);
-        }
-
-        .video-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background:
-                repeating-linear-gradient(0deg,
-                    rgba(0, 0, 0, 0.15),
-                    rgba(0, 0, 0, 0.15) 1px,
-                    transparent 1px,
-                    transparent 2px);
-            pointer-events: none;
-            animation: tvScan 0.15s infinite;
-        }
-
-        /* ===== КОНТАКТНАЯ ИНФОРМАЦИЯ ===== */
-        .contacts-section {
-            background: transparent;
-            border: none;
-            padding: 40px;
-            text-align: center;
-            box-shadow: none;
-            margin-top: 50px;
-            filter: brightness(1.1) contrast(1.2);
-        }
-
-        .contacts-title {
-            font-size: 56px;
-            margin-bottom: 30px;
-            animation: flicker 2s ease-in-out infinite;
-            text-shadow:
-                4px 4px 0 rgba(0, 0, 0, 0.9),
-                8px 8px 0 rgba(0, 255, 255, 0.5),
-                -2px -2px 0 rgba(255, 0, 255, 0.4);
-            position: relative;
-        }
-
-        .contacts-title::before {
-            content: attr(data-text);
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            color: #ff00ff;
-            z-index: -1;
-            text-shadow:
-                -3px 0 #00ffff,
-                3px 0 #ff00ff;
-            opacity: 0.7;
-            animation: glitch-anim-1 0.9s infinite;
-        }
-
-        .contacts-title::after {
-            content: attr(data-text);
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            color: #00ffff;
-            z-index: -1;
-            text-shadow:
-                -3px 0 #ff00ff,
-                3px 0 #00ffff;
-            opacity: 0.7;
-            animation: glitch-anim-2 0.9s infinite;
-        }
-
-        .contact-info {
-            font-size: 32px;
-            margin: 20px 0;
-            text-decoration: none;
-            color: #00ffff;
-            transition: all 0.3s ease;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
-            filter: brightness(1.2);
-        }
-
-        .contact-info:hover {
-            color: #ff00ff;
-            text-shadow:
-                2px 2px 0 #00ffff,
-                4px 4px 0 rgba(0, 0, 0, 0.9),
-                0 0 20px rgba(255, 0, 255, 0.6);
-        }
-
-        /* ===== КНОПКА ЗАКАЗА ===== */
-        .order-button {
-            display: inline-block;
-            padding: 30px 60px;
-            font-size: 44px;
-            font-weight: bold;
-            background: linear-gradient(45deg, #ff00ff, #aa00ff, #ff00ff);
-            color: #fff;
-            border: 6px solid #00ffff;
-            text-decoration: none;
-            cursor: pointer;
-            margin-top: 30px;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            box-shadow:
-                0 0 40px rgba(255, 0, 255, 0.8),
-                0 0 80px rgba(0, 255, 255, 0.5),
-                8px 8px 0 rgba(0, 0, 0, 0.7);
-            animation: buttonFlicker 0.5s ease-in-out infinite;
-            transition: transform 0.2s;
-            text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.9), 0 0 10px rgba(0, 255, 255, 0.6);
-        }
-
-        @keyframes buttonFlicker {
-
-            0%,
-            100% {
-                box-shadow:
-                    0 0 40px rgba(255, 0, 255, 0.8),
-                    0 0 80px rgba(0, 255, 255, 0.5),
-                    8px 8px 0 rgba(0, 0, 0, 0.7);
-                text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.9), 0 0 10px rgba(0, 255, 255, 0.8);
-            }
-
-            50% {
-                box-shadow:
-                    0 0 20px rgba(255, 0, 255, 0.4),
-                    0 0 40px rgba(0, 255, 255, 0.2),
-                    8px 8px 0 rgba(0, 0, 0, 0.5);
-                text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.7), 0 0 5px rgba(0, 255, 255, 0.4);
-            }
-        }
-
-        .order-button:hover {
-            transform: scale(1.05);
-            background: linear-gradient(45deg, #ff00ff, #ff00ff, #aa00ff);
-            box-shadow:
-                0 0 60px rgba(255, 0, 255, 0.9),
-                0 0 100px rgba(0, 255, 255, 0.6),
-                8px 8px 0 rgba(0, 0, 0, 0.7);
-        }
-
-        .order-button:active {
-            transform: scale(0.98);
-        }
-
-        /* ===== ФИНАЛЬНЫЙ ЭКРАН ===== */
-        .final-screen {
-            text-align: center;
-            padding: 60px 30px;
-            font-size: 48px;
-            font-weight: bold;
-            animation: flicker 1.5s ease-in-out infinite;
-            text-shadow:
-                4px 4px 0 rgba(0, 0, 0, 0.9),
-                8px 8px 0 rgba(255, 0, 255, 0.6),
-                -2px -2px 0 rgba(0, 255, 255, 0.5);
-            letter-spacing: 2px;
-            filter: brightness(1.3) contrast(1.4) saturate(1.5);
-            position: relative;
-        }
-
-        .final-screen::before {
-            content: attr(data-text);
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            color: #ff00ff;
-            z-index: -1;
-            text-shadow:
-                -2px 0 #00ffff,
-                2px 0 #ff00ff;
-            opacity: 0.8;
-            animation: glitch-anim-1 0.7s infinite;
-            text-align: center;
-        }
-
-        .final-screen::after {
-            content: attr(data-text);
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            color: #00ffff;
-            z-index: -1;
-            text-shadow:
-                -2px 0 #ff00ff,
-                2px 0 #00ffff;
-            opacity: 0.8;
-            animation: glitch-anim-2 0.7s infinite;
-            text-align: center;
-        }
-
-        /* АДАПТИВНОСТЬ */
-        @media (max-width: 768px) {
-            .lot-title {
-                font-size: 32px;
-            }
-
-            .lot-content {
-                font-size: 36px;
-            }
-
-            .order-button {
-                padding: 20px 40px;
-                font-size: 32px;
-            }
-
-            .contacts-title {
-                font-size: 40px;
-            }
-
-            .contact-info {
-                font-size: 24px;
-            }
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
             font-family: 'Arial', sans-serif;
             background: linear-gradient(135deg, #1a0033 0%, #330066 25%, #003366 50%, #001a4d 75%, #330033 100%);
             background-attachment: fixed;
@@ -814,7 +41,7 @@
             animation: tvGlitchRare 20s infinite;
         }
 
-        /* МЕРЦАНИЕ И ГЛИТЧИ */
+        /* ===== АНИМАЦИИ ===== */
         @keyframes flicker {
 
             0%,
@@ -943,6 +170,96 @@
             }
         }
 
+        @keyframes scrollHorizontal {
+            0% {
+                transform: translateX(-100%);
+            }
+
+            100% {
+                transform: translateX(100vw);
+            }
+        }
+
+        @keyframes buttonFlicker {
+
+            0%,
+            100% {
+                box-shadow:
+                    0 0 40px rgba(255, 0, 255, 0.8),
+                    0 0 80px rgba(0, 255, 255, 0.5),
+                    8px 8px 0 rgba(0, 0, 0, 0.7);
+                text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.9), 0 0 10px rgba(0, 255, 255, 0.8);
+            }
+
+            50% {
+                box-shadow:
+                    0 0 20px rgba(255, 0, 255, 0.4),
+                    0 0 40px rgba(0, 255, 255, 0.2),
+                    8px 8px 0 rgba(0, 0, 0, 0.5);
+                text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.7), 0 0 5px rgba(0, 255, 255, 0.4);
+            }
+        }
+
+        /* ===== БЕГУЩИЙ ТЕКСТ ===== */
+        .scrolling-banner {
+            position: fixed;
+            top: 0;
+            left: -10vw;
+            width: 100vw;
+            height: 120px;
+            transform: rotate(-25deg);
+            z-index: 5;
+            pointer-events: none;
+            overflow: hidden;
+            padding: 20px 0;
+        }
+
+        .scrolling-banner-content {
+            position: fixed;
+            top: 0;
+            left: 0;
+            white-space: nowrap;
+            font-size: 76px;
+            font-weight: bold;
+            font-family: 'Impact', 'Arial Black', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 20px;
+            color: #FFD700;
+            text-shadow:
+                3px 3px 0 rgba(255, 0, 0, 0.8),
+                6px 6px 0 rgba(0, 0, 0, 0.6),
+                -2px -2px 0 rgba(255, 0, 255, 0.4);
+            animation: scrollHorizontal 10s linear infinite;
+            z-index: 501;
+            padding-top: 20px;
+        }
+
+        .scrolling-banner-content::before {
+            content: 'ПРАЗДНИЧНАЯ РАСПРОДАЖА';
+            position: fixed;
+            top: 0;
+            left: 0;
+            color: #ff0000;
+            opacity: 0.6;
+            text-shadow: -2px 0 #ffff00;
+            animation: scrollHorizontal 10s linear infinite;
+            z-index: 500;
+            padding-top: 20px;
+        }
+
+        .scrolling-banner-content::after {
+            content: 'ПРАЗДНИЧНАЯ РАСПРОДАЖА';
+            position: fixed;
+            top: 0;
+            left: 0;
+            color: #ff00ff;
+            opacity: 0.6;
+            text-shadow: 2px 0 #00ffff;
+            animation: scrollHorizontal 10s linear infinite;
+            z-index: 500;
+            padding-top: 20px;
+        }
+
         /* ===== КОНТЕЙНЕР ===== */
         .container {
             max-width: 1400px;
@@ -950,50 +267,241 @@
             padding: 40px 20px;
         }
 
-        /* ===== ЗАГОЛОВОК ===== */
-        .header {
-            text-align: center;
-            margin-bottom: 60px;
+        /* ===== ИНТРО С ВИДЕО ===== */
+        .intro-section {
+            position: relative;
+            width: 100vw;
+            height: 900px;
+            margin: 0 calc(-50vw + 50%);
+            margin-bottom: 40px;
+            border: none;
+            background: #000;
+            overflow: hidden;
+            box-shadow:
+                0 0 30px rgba(0, 0, 0, 0.9),
+                0 0 60px rgba(255, 0, 255, 0.2);
+        }
+
+        .intro-section video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            filter: contrast(1.2) brightness(0.9);
+        }
+
+        .intro-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                repeating-linear-gradient(0deg,
+                    rgba(0, 0, 0, 0.15),
+                    rgba(0, 0, 0, 0.15) 1px,
+                    transparent 1px,
+                    transparent 2px);
+            pointer-events: none;
+        }
+
+        /* ===== ЛОТЫ ===== */
+        .lot-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .lot {
+            position: relative;
+            padding: 30px;
+            background: transparent;
+            min-height: auto;
+            transform-style: preserve-3d;
+            margin-bottom: 40px;
+        }
+
+        .lot-title {
+            font-size: 78px;
+            /* margin-bottom: -5px;  */
+            text-shadow:
+                3px 3px 0 rgba(0, 0, 0, 0.9),
+                6px 6px 0 rgba(255, 255, 255, 0.2),
+                -2px -2px 0 rgba(255, 0, 255, 0.5);
+            animation: flicker 3s ease-in-out infinite;
+            letter-spacing: 2px;
+            filter: brightness(1.2) contrast(1.3) saturate(1.4);
             position: relative;
         }
 
-        .header h1 {
-            font-size: 48px;
-            color: #ffff00;
-            margin-bottom: 15px;
-            text-shadow:
-                3px 3px 0 rgba(0, 0, 0, 0.9),
-                0 0 20px rgba(255, 255, 0, 0.6);
-            letter-spacing: 2px;
-            animation: flicker 3s ease-in-out infinite;
+        .lot-title::before {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            color: #ff00ff;
+            z-index: -1;
+            text-shadow: -2px 0 #00ffff, 2px 0 #ff00ff;
+            opacity: 0.8;
+            animation: glitch-anim-1 0.8s infinite;
         }
 
-        .header p {
-            font-size: 22px;
+        .lot-title::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             color: #00ffff;
-            text-shadow: 0 0 10px rgba(0, 255, 255, 0.6);
-            margin-bottom: 10px;
+            z-index: -1;
+            text-shadow: -2px 0 #ff00ff, 2px 0 #00ffff;
+            opacity: 0.8;
+            animation: glitch-anim-2 0.8s infinite;
         }
 
-        .header .subtitle {
-            font-size: 18px;
-            color: #ffdd00;
-            font-style: italic;
+        .lot-content {
+            font-size: 36px;
+            line-height: 1.8;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+            padding: 20px 0;
+            filter: brightness(1.1) contrast(1.1);
         }
 
-        /* ===== ЛОТ (КАРТОЧКА) ===== */
-        .lot-section {
+        .lot-content p {
+            font-size: 24px;
+            color: #e0e0e0;
+            margin-bottom: 15px;
+            line-height: 1.8;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9);
+        }
+
+        .lot-content strong {
+            color: #ffff00;
+            text-shadow: 0 0 10px rgba(255, 255, 0, 0.6);
+        }
+
+        /* ===== ЛОТ-СЕКЦИЯ С КАРТОЧКОЙ ===== */
+        .top-section {
             display: grid;
             grid-template-columns: 420px 1fr;
-            gap: 50px;
-            margin-bottom: 80px;
+            /* gap: 50px;  */
+            /* margin-bottom: 80px; */
             align-items: flex-start;
             padding: 40px 0;
             border-bottom: 2px solid rgba(255, 255, 0, 0.1);
         }
 
-        .lot-section:last-child {
+        .top-section:last-child {
             border-bottom: none;
+        }
+
+        /* ===== TOP-SECTION (как в index3) ===== */
+        .top-section {
+            display: grid;
+            grid-template-columns: 520px 1fr;
+            gap: 60px;
+            margin-bottom: 30px;
+            align-items: flex-start;
+        }
+
+        .right-content {
+            padding: 20px 0;
+        }
+
+        .right-content h1 {
+            font-size: 42px;
+            color: #ffff00;
+            margin-bottom: 25px;
+            text-shadow:
+                3px 3px 0 rgba(0, 0, 0, 0.9),
+                0 0 20px rgba(255, 255, 0, 0.6);
+            letter-spacing: 2px;
+            animation: flicker 3s ease-in-out infinite;
+            position: relative;
+        }
+
+        .right-content h1::before {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            color: #ff00ff;
+            z-index: -1;
+            text-shadow:
+                -2px 0 #00ffff,
+                2px 0 #ff00ff;
+            opacity: 0.8;
+            animation: glitch-anim-1 0.8s infinite;
+            clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+        }
+
+        .right-content h1::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            color: #00ffff;
+            z-index: -1;
+            text-shadow:
+                -2px 0 #ff00ff,
+                2px 0 #00ffff;
+            opacity: 0.8;
+            animation: glitch-anim-2 0.8s infinite;
+            clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+        }
+
+        .description {
+            font-size: 18px;
+            color: #e0e0e0;
+            margin-bottom: 25px;
+            line-height: 1.8;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9);
+        }
+
+        .features-list {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+
+        .features-list li {
+            font-size: 20px;
+            margin-bottom: 12px;
+            padding-left: 30px;
+            position: relative;
+            color: #e0e0e0;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9);
+        }
+
+        .features-list li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #00ffff;
+            font-size: 30px;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
+        }
+
+        .number-highlight {
+            background: linear-gradient(45deg, #ff00ff, #ff0080);
+            color: #fff;
+            padding: 6px 14px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 18px;
+            box-shadow: 0 0 20px rgba(255, 0, 255, 0.6);
+            display: inline-block;
+            margin: 0 6px;
+            text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.8);
+            letter-spacing: 1px;
+            animation: pulse 2s ease-in-out infinite;
         }
 
         /* ===== КАРТОЧКА (ПОЛАРОИД) ===== */
@@ -1010,8 +518,13 @@
             display: flex;
             flex-direction: column;
             filter: drop-shadow(15px 15px 30px rgba(0, 0, 0, 0.9));
-            transform: perspective(1000px) rotateY(-3deg) rotateX(1deg);
+            transform: perspective(1000px) rotateY(-15deg) rotateX(1deg);
             transition: transform 0.3s ease;
+        }
+
+        .top-section .card {
+            width: 520px;
+            height: 600px;
         }
 
         .card:hover {
@@ -1065,14 +578,12 @@
         }
 
         .card-content-box {
-            background: linear-gradient(135deg, #e0e0e0 0%, #f5f5f5 100%);
+            /* background: linear-gradient(135deg, #e0e0e0 0%, #f5f5f5 100%); */
             flex: 1;
-            padding: 0;
             margin-bottom: 20px;
-            border: none;
             box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.1);
             display: flex;
-            align-items: center;
+            /* align-items: center; */
             justify-content: center;
             position: relative;
             z-index: 1;
@@ -1112,35 +623,7 @@
             text-shadow: 3px 3px 0 rgba(255, 255, 255, 0.6);
         }
 
-        /* ===== КОНТЕНТ ЛОТА ===== */
-        .lot-content {
-            padding: 20px 0;
-        }
-
-        .lot-content h2 {
-            font-size: 36px;
-            color: #ffff00;
-            margin-bottom: 20px;
-            text-shadow:
-                3px 3px 0 rgba(0, 0, 0, 0.9),
-                0 0 20px rgba(255, 255, 0, 0.6);
-            letter-spacing: 1px;
-            animation: flicker 3s ease-in-out infinite;
-        }
-
-        .lot-content p {
-            font-size: 24px;
-            color: #e0e0e0;
-            margin-bottom: 15px;
-            line-height: 1.8;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9);
-        }
-
-        .lot-content strong {
-            color: #ffff00;
-            text-shadow: 0 0 10px rgba(255, 255, 0, 0.6);
-        }
-
+        /* ===== СПИСКИ ФУНКЦИЙ ===== */
         .feature-list {
             margin: 15px 0;
             padding-left: 30px;
@@ -1157,20 +640,7 @@
             text-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
         }
 
-        .highlight {
-            background: linear-gradient(45deg, #ff00ff, #ff0080);
-            color: #fff;
-            padding: 6px 14px;
-            border-radius: 4px;
-            font-weight: bold;
-            font-size: 16px;
-            box-shadow: 0 0 20px rgba(255, 0, 255, 0.6);
-            display: inline-block;
-            margin: 0 4px;
-            text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.8);
-            animation: pulse 2s ease-in-out infinite;
-        }
-
+        /* ===== БЕЙДЖИ ===== */
         .status-badge {
             display: inline-block;
             padding: 6px 16px;
@@ -1181,37 +651,148 @@
             text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.8);
         }
 
-        .status-soon {
-            background: linear-gradient(90deg, #ff6600, #ff9900);
-            color: #fff;
-            box-shadow: 0 0 20px rgba(255, 102, 0, 0.6);
-        }
-
         .status-active {
             background: linear-gradient(90deg, #00cc00, #00ff00);
             color: #000;
             box-shadow: 0 0 20px rgba(0, 255, 0, 0.6);
         }
 
-        /* ===== ФИНАЛЬНАЯ СЕКЦИЯ ===== */
-        .final-section {
-            text-align: center;
-            margin-top: 100px;
-            padding: 60px 40px;
-            background: linear-gradient(135deg, rgba(255, 255, 0, 0.1) 0%, rgba(255, 0, 255, 0.1) 100%);
-            border: 2px solid rgba(255, 255, 0, 0.3);
-            border-radius: 10px;
+        .ribbon {
+            border: 5px solid rgb(192, 0, 0);
+            border-radius: 25px;
+            padding: 10px 50px;
+            color: rgb(192, 0, 0);
+            font-size: 64px;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+            transform: rotate(-25deg);
+            white-space: nowrap;
+            display: inline-block;
+            margin-left: 500px;
+            margin-bottom: 200px;
         }
 
-        .final-section h2 {
-            font-size: 42px;
-            color: #ffff00;
-            margin-bottom: 40px;
+        .stamp {
+            opacity: 0;
+            animation: stampSlam 0.5s ease-out 1s forwards;
+            /* 1s = задержка перед появлением */
+        }
+
+        @keyframes stampSlam {
+            0% {
+                opacity: 0;
+                transform: rotate(-15deg) scale(3);
+                /* начинает большим */
+            }
+
+            70% {
+                transform: rotate(-15deg) scale(0.9);
+                /* сжимается чуть меньше */
+            }
+
+            100% {
+                opacity: 1;
+                transform: rotate(-15deg) scale(1);
+                /* финальный размер */
+            }
+        }
+
+        /* ===== ВИДЕО В СЕРЕДИНЕ ===== */
+        .video-section {
+            position: relative;
+            width: 100vw;
+            height: 900px;
+            margin: 60px calc(-50vw + 50%);
+            background: #000;
+            overflow: hidden;
+            box-shadow:
+                0 0 40px rgba(0, 0, 0, 0.9),
+                0 0 80px rgba(0, 255, 255, 0.2);
+        }
+
+        .video-section video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            filter: contrast(1.3) brightness(0.85);
+        }
+
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                repeating-linear-gradient(0deg,
+                    rgba(0, 0, 0, 0.15),
+                    rgba(0, 0, 0, 0.15) 1px,
+                    transparent 1px,
+                    transparent 2px);
+            pointer-events: none;
+        }
+
+        /* ===== ИНФОРМАЦИОННАЯ ПОЛОСКА ===== */
+        .info-bar {
+            background: linear-gradient(90deg, #a89c1f, #c9b24d, #a89c1f);
+            padding: 20px 30px;
+            box-shadow:
+                0 0 30px rgba(184, 166, 23, 0.5),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            font-size: 18px;
+            color: rgba(0, 0, 0, 0.8);
+            text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.6);
+            font-weight: bold;
+            letter-spacing: 0.5px;
+            line-height: 1.6;
+        }
+
+        /* ===== КОНТАКТНАЯ ИНФОРМАЦИЯ ===== */
+        .contacts-section {
+            padding: 40px;
+            text-align: center;
+            margin-top: 50px;
+            filter: brightness(1.1) contrast(1.2);
+        }
+
+        .contacts-title {
+            font-size: 56px;
+            margin-bottom: 30px;
+            animation: flicker 2s ease-in-out infinite;
             text-shadow:
-                3px 3px 0 rgba(0, 0, 0, 0.9),
-                0 0 20px rgba(255, 255, 0, 0.6);
-            letter-spacing: 2px;
-            animation: flicker 2.5s ease-in-out infinite;
+                4px 4px 0 rgba(0, 0, 0, 0.9),
+                8px 8px 0 rgba(0, 255, 255, 0.5),
+                -2px -2px 0 rgba(255, 0, 255, 0.4);
+            position: relative;
+        }
+
+        .contacts-title::before {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            color: #ff00ff;
+            z-index: -1;
+            text-shadow: -3px 0 #00ffff, 3px 0 #ff00ff;
+            opacity: 0.7;
+            animation: glitch-anim-1 0.9s infinite;
+        }
+
+        .contacts-title::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            color: #00ffff;
+            z-index: -1;
+            text-shadow: -3px 0 #ff00ff, 3px 0 #00ffff;
+            opacity: 0.7;
+            animation: glitch-anim-2 0.9s infinite;
         }
 
         .contact-info {
@@ -1234,6 +815,7 @@
             box-shadow: 0 0 40px rgba(0, 255, 255, 1);
         }
 
+        /* ===== КНОПКА ЗАКАЗА ===== */
         .order-button {
             display: inline-block;
             margin-top: 30px;
@@ -1248,6 +830,7 @@
             box-shadow: 0 0 40px rgba(255, 0, 255, 0.8);
             letter-spacing: 2px;
             text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.8);
+            animation: buttonFlicker 0.5s ease-in-out infinite;
         }
 
         .order-button:hover {
@@ -1255,12 +838,67 @@
             box-shadow: 0 0 60px rgba(255, 0, 255, 1);
         }
 
-        /* ===== АДАПТИВ ===== */
+        .order-button:active {
+            transform: scale(0.98);
+        }
+
+        /* ===== ФИНАЛЬНЫЙ ЭКРАН ===== */
+        .final-screen {
+            text-align: center;
+            padding: 60px 30px;
+            font-size: 48px;
+            font-weight: bold;
+            animation: flicker 1.5s ease-in-out infinite;
+            text-shadow:
+                4px 4px 0 rgba(0, 0, 0, 0.9),
+                8px 8px 0 rgba(255, 0, 255, 0.6),
+                -2px -2px 0 rgba(0, 255, 255, 0.5);
+            letter-spacing: 2px;
+            filter: brightness(1.3) contrast(1.4) saturate(1.5);
+            position: relative;
+        }
+
+        .final-screen::before {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            color: #ff00ff;
+            z-index: -1;
+            text-shadow: -2px 0 #00ffff, 2px 0 #ff00ff;
+            opacity: 0.8;
+            animation: glitch-anim-1 0.7s infinite;
+            text-align: center;
+        }
+
+        .final-screen::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            color: #00ffff;
+            z-index: -1;
+            text-shadow: -2px 0 #ff00ff, 2px 0 #00ffff;
+            opacity: 0.8;
+            animation: glitch-anim-2 0.7s infinite;
+            text-align: center;
+        }
+
+        /* ===== АДАПТИВНОСТЬ ===== */
         @media (max-width: 1024px) {
-            .lot-section {
+            .top-section {
                 grid-template-columns: 1fr;
                 gap: 30px;
                 text-align: center;
+            }
+
+            .top-section {
+                grid-template-columns: 1fr;
+                gap: 40px;
             }
 
             .card {
@@ -1269,12 +907,24 @@
                 margin: 0 auto;
             }
 
-            .header h1 {
+            .top-section .card {
+                max-width: 520px;
+            }
+
+            .lot-title {
+                font-size: 48px;
+            }
+
+            .right-content h1 {
                 font-size: 36px;
             }
 
-            .lot-content h2 {
-                font-size: 28px;
+            .description {
+                font-size: 16px;
+            }
+
+            .features-list li {
+                font-size: 24px;
             }
 
             .container {
@@ -1283,11 +933,11 @@
         }
 
         @media (max-width: 768px) {
-            .header h1 {
-                font-size: 28px;
+            .lot-title {
+                font-size: 32px;
             }
 
-            .lot-content h2 {
+            .lot-content {
                 font-size: 24px;
             }
 
@@ -1300,17 +950,17 @@
                 font-size: 36px;
             }
 
-            .lot-section {
+            .top-section {
                 margin-bottom: 60px;
                 padding: 20px 0;
             }
 
-            .final-section {
+            .contacts-section {
                 padding: 40px 20px;
             }
 
-            .final-section h2 {
-                font-size: 28px;
+            .contacts-title {
+                font-size: 40px;
             }
 
             .contact-info {
@@ -1326,37 +976,74 @@
             .feature-list {
                 padding-left: 20px;
             }
+
+            .final-screen {
+                font-size: 28px;
+            }
         }
 
-        /* ===== ИНФОРМАЦИОННАЯ ПОЛОСКА ===== */
-        .info-bar {
-            background: linear-gradient(90deg, #a89c1f, #c9b24d, #a89c1f);
-            padding: 20px 30px;
-            border: none;
-            box-shadow:
-                0 0 30px rgba(184, 166, 23, 0.5),
-                inset 0 1px 0 rgba(255, 255, 255, 0.3);
-            font-size: 18px;
-            color: rgba(0, 0, 0, 0.8);
-            text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.6);
-            font-weight: bold;
-            letter-spacing: 0.5px;
-            line-height: 1.6;
+        /* FULLSCREEN РЕЖИМ КАРТОЧКИ */
+        .card {
+            cursor: pointer;
+            transition: all 0.4s ease;
         }
 
-        .ribbon {
-            border: 5px solid rgb(192, 0, 0);
-            border-radius: 25px;
-            padding: 10px 50px;
-            color: rgb(192, 0, 0);
-            font-size: 24px;
-            font-weight: bold;
-            font-family: Arial, sans-serif;
-            transform: rotate(-25deg);
-            white-space: nowrap;
-            display: inline-block;
-            margin-left: 500px;
-            margin-bottom: 200px;
+        .card.fullscreen {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) !important;
+            width: 90vw !important;
+            height: 90vh !important;
+            max-width: 1200px;
+            max-height: 900px;
+            z-index: 1001;
+            padding: 20px;
+        }
+
+        .card.fullscreen .card-header,
+        .card.fullscreen .card-footer {
+            display: none;
+        }
+
+        .card.fullscreen .card-content-box {
+            margin: 0;
+            height: 100%;
+            border-radius: 10px;
+        }
+
+        .card.fullscreen .card-content-emoji {
+            font-size: 200px;
+        }
+
+        .card.fullscreen .card-content-image,
+        .card.fullscreen video {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        /* Затемнение фона */
+        .fullscreen-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            cursor: pointer;
+        }
+
+        .fullscreen-hint {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.6);
+            z-index: 1002;
+            pointer-events: none;
         }
     </style>
 </head>
@@ -1370,7 +1057,7 @@
     <div class="container">
         <!-- ВСТУПЛЕНИЕ С ВИДЕО -->
         <section class="intro-section">
-            <video autoplay muted playsinline id="introVideo">
+            <video autoplay muted loop playsinline id="introVideo">
                 <source src="./5ff4cd83abbce.mp4" type="video/mp4">
             </video>
             <div class="intro-overlay"></div>
@@ -1381,25 +1068,28 @@
             <div class="lot-grid">
                 <!-- ЛОТ 1: ЗАГОЛОВОК -->
                 <div class="lot">
-                    <div class="lot-number">①</div>
-                    <div class="lot-title" data-text="МАГАЗИН НА ДИВАНЕ">МАГАЗИН НА ДИВАНЕ</div>
+                    <div class="lot-title" style="font-size: 116px;" data-text="МАГАЗИН НА ДИВАНЕ">МАГАЗИН НА ДИВАНЕ
+                    </div>
                     <div class="lot-content">
-                        <p>Максимум пользы на квадратный сантиметр</p>
-                        <p style="margin-top: 10px;">И мы дарим вам лучшие приложения для EdTech</p>
-                        <div class="ribbon">Нам 3 месяца!</div>
+                        <p style="font-size: 44px;">Только лучшие решения для тех, кто ценит своё время!</p>
+                        <p style="font-size: 44px;"><strong>Забудьте о рутине НАВСЕГДА!</strong></p>
+                        <p style="font-size: 44px;">Работает за вас. Думает за вас. Экономит ваши нервы!</p>
+                        <div class="ribbon">Нам уже 3 месяца!</div>
                     </div>
                 </div>
 
-                <!-- ===== ЛОТ 1: BotApp v.5.10 ===== -->
+                <!-- ЛОТ 2: BotApp v.5.10 -->
                 <div class="lot-title" data-text="BotApp">BotApp</div>
-                <div class="lot-section">
+                <div class="top-section">
                     <div class="card">
                         <div class="card-header">
                             <span class="card-lot">Лот</span>
                             <span class="card-number">334</span>
                         </div>
                         <div class="card-content-box">
-                            <div class="card-content-emoji">🤖</div>
+                            <video autoplay muted loop playsinline onloadeddata="this.playbackRate = 4.0;">
+                                <source src="./Скринкаст на слайд про BotApp 5.10.mp4" type="video/mp4">
+                            </video>
                         </div>
                         <div class="card-footer">
                             <span class="card-footer-text">Версия</span>
@@ -1407,226 +1097,527 @@
                         </div>
                     </div>
 
-                    <div class="lot-content">
-                        <p style="margin-top: 20px;"><strong>Основной функционал:</strong></p>
-                        <ul class="feature-list">
-                            <li>Поддержка функционала мини-приложений</li>
-                            <li>Система Plug-n-Play для модулей действий</li>
-                            <li>Пользовательские счетчики</li>
-                            <li>Настраиваемая форма календаря</li>
-                            <li>Peer-2-peer взаимодействие между пользователями</li>
-                            <li>Режим администратора в любом чат-боте</li>
-                            <li>Повышенная стабильность</li>
+                    <div class="right-content">
+                        <h1 data-text="ОБНОВЛЕНИЕ 5.10 УЖЕ ЗДЕСЬ!">ОБНОВЛЕНИЕ 5.10 УЖЕ ЗДЕСЬ!</h1>
+
+                        <p style="margin-top: 15px; font-size: 24px;"><strong>Теперь вам ДОСТУПНЫ:</strong></p>
+                        <ul class="features-list">
+                            <li>НОВИНКА! Мини-приложения прямо внутри бота — забудь про неудобные кнопки!</li>
+                            <li>НОВИНКА! Система Plug-n-Play для модулей — безграничные возможности расширения ПРОСТО и
+                                БЫСТРО!</li>
+                            <li>НОВИНКА! Пользовательские счётчики — ГИБКОСТЬ логики, которой не было в истории!</li>
+                            <li>НОВИНКА! Календари, выбор часового пояса, галереи картинок — УДОБСТВО на пределе!</li>
+                            <li>НОВИНКА! Peer-2-peer режим — пользователи общаются НАПРЯМУЮ!</li>
+                            <li>НОВИНКА! Режим администратора — ПОЛНЫЙ контроль над любым ботом!</li>
+                            <li>УЛУЧШЕНО! Стабильность на МАКСИМУМЕ!</li>
+                            <li>И ЭТО ЕЩЕ НЕ ВСЁ!</li>
                         </ul>
-                        <span class="status-badge status-active">✓ Активно</span>
                     </div>
                 </div>
                 <div class="info-bar">
-                    <p style="margin-top: 5px;"><strong>Бонусы:</strong></p>
+                    <p><strong>🎁 А ВОТ И БОНУСЫ:</strong></p>
                     <ul>
-                        <li>Сервера для размещения в сети РТК ИТ (согласовано с ИБ!)</li>
-                        <li>Сертификат на скидку на обучение в Школе Ботостроения</li>
+                        <li>Серверы в сети РТК ИТ: интеграция с корпоративными ИС без ограничений!</li>
+                        <li>БЕСПЛАТНЫЙ сертификат на скидку в Школе Ботостроения — станьте мастером!</li>
                     </ul>
                 </div>
 
-                <!-- ЛОТ 3: AdaptON -->
-                <div class="lot">
-                    <div class="lot-number">③</div>
+                <!-- ===== ЛОТ 2: BotApp v.6.0 ===== -->
+                <div class="lot-title" data-text="BotApp v.6.0">BotApp v.6.0</div>
+                <div class="top-section">
+                    <div class="card">
+                        <div class="card-header">
+                            <span class="card-lot">Лот</span>
+                            <span class="card-number">274</span>
+                        </div>
+                        <div class="card-content-box">
+                            <img src="./Group 1321318262.png" alt="BotApp" class="card-content-image">
+                        </div>
+                        <div class="card-footer">
+                            <span class="card-footer-text">Версия</span>
+                            <span class="card-price">6.0</span>
+                        </div>
+                    </div>
 
-                    <div class="lot-title" data-text="Адаптация ON">Адаптация ON</div>
-                    <div class="lot-content">
-                        <p>Акселератор адаптации сотрудников</p>
-                        <p style="margin-top: 15px;">Переосмысленное позиционирование</p>
-                        <p>Новый генератор ссылок-инвайтов</p>
-                        <p>Автоматическое формирование списков новичков</p>
-                        <p>+4000 пользователей, +8 ролей</p>
-                        <p style="margin-top: 15px; font-style: italic;">Скоро: самостоятельная запись на практикумы!
+                    <div class="right-content">
+                        <h1 data-text="РЕВОЛЮЦИЯ в мире ботов!">РЕВОЛЮЦИЯ в мире ботов!</h1>
+
+                        <p style="margin-top: 15px; font-size: 24px;"><strong>Что вас ждёт? Держитесь крепче!</strong>
                         </p>
+                        <ul class="feature-list" style="font-size: 24px;">
+                            <li>Полностью НОВЫЙ движок — МНОЖЕСТВО ботов на одном сервере!</li>
+                            <li>Управляйте ботами через КРАСИВЫЙ веб-интерфейс — забудьте о кошмаре с JSON!</li>
+                            <li>Telegram, VK, Max — выбери СВОЙ мессенджер!</li>
+                        </ul>
+
+                        <p style="margin-top: 20px; color: #ffff00; font-weight: bold; font-size: 36px;">УЖЕ СКОРО! УЖЕ
+                            СКОРО! УЖЕ СКОРО!</p>
+                        <p style="color: #00ffff; font-size: 36px;">Не пропустите — следите за анонсами!</p>
+                        <div class="ribbon" style="margin-left: 150px;">Предзаказ открыт!</div>
                     </div>
                 </div>
 
-                <!-- ЛОТ 4: Video SpellChecker -->
-                <div class="lot">
-                    <div class="lot-number">④</div>
-                    <div class="lot-title" data-text="Video SpellChecker">Video SpellChecker</div>
-                    <div class="lot-content">
-                        <p><strong>Проверка титров в видео за вас!</strong></p>
-                        <p style="margin-top: 15px;">Задолбались долго просматривать видео и потом получать замечания по
-                            опечаткам в титрах?</p>
-                        <p style="margin-top: 15px;">Работает на Windows и Alt</p>
-                        <p>Словари русского и английского языка</p>
-                        <p>Пользовательский словарь исключений</p>
-                    </div>
-                </div>
 
-                <!-- ЛОТ 5: Конструктор рассылок -->
-                <div class="lot">
-                    <div class="lot-number">⑤</div>
-                    <div class="lot-title" data-text="Конструктор Рассылок">Конструктор Рассылок</div>
-                    <div class="lot-content">
-                        <p><strong>Собирайте письма быстро без Figma!</strong></p>
-                        <p style="margin-top: 15px;">1. Открыли приложение</p>
-                        <p>2. Выбрали шаблон</p>
-                        <p>3. Отредактировали блоки</p>
-                        <p>4. Отправили в Outlook</p>
-                        <p style="margin-top: 15px;">Полный функционал редактирования прямо в приложении. Никакой лишней
-                            работы в других программах!</p>
+                <!-- ===== ЛОТ 3: AdaptON ===== -->
+                <div class="lot-title" data-text="AdaptON">AdaptON</div>
+                <div class="top-section">
+                    <div class="card">
+                        <div class="card-header">
+                            <span class="card-lot">Лот</span>
+                            <span class="card-number">367</span>
+                        </div>
+                        <div class="card-content-box">
+                            <img src="./photo_2025-12-26_14-12-13.jpg" alt="BotApp" class="card-content-image">
+                        </div>
+                        <div class="card-footer">
+                            <span class="card-footer-text">Пользователи</span>
+                            <span class="card-price">+4K</span>
+                        </div>
                     </div>
-                </div>
 
-                <!-- ЛОТ 6: Конструктор тестов (ТВОЙ ПРОДУКТ!) -->
-                <div class="lot">
-                    <div class="lot-number">⑥</div>
-                    <div class="lot-title" data-text="Конструктор Тестов">Конструктор Тестов</div>
-                    <div class="lot-content">
-                        <p><strong>Создавай тесты с расширенной обратной связью!</strong></p>
-                        <p style="margin-top: 15px;">LMS дают ограниченный функционал? Мы решаем эту проблему!</p>
-                        <p style="margin-top: 15px;">Создавай тесты в приложении</p>
-                        <p>Паковай их в SCORM 2004 пакеты</p>
-                        <p>Загружай прямо в LMS</p>
-                        <p>Получай расширенную обратную связь от студентов</p>
-                        <p style="margin-top: 15px; font-weight: bold; color: #ffff00;">ПЕРСОНАЛИЗИРОВАННЫЕ РЕЗУЛЬТАТЫ!
+                    <div class="right-content">
+                        <h1 data-text="Новички адаптируются САМИ!">Новички адаптируются САМИ!</h1>
+
+                        <p style="font-size: 20px;">Новых счастливых пользователей: <span
+                                class="number-highlight">+4000</span></p>
+                        <p style="font-size: 20px;">Новых возможностей: <span class="number-highlight">+8 ролей</span>
                         </p>
+
+                        <p style="margin-top: 15px; font-size: 24px;"><strong>Акселератор: Что мы сделали?</strong></p>
+                        <ul class="feature-list">
+                            <li>Полностью переосмыслили подход — НЕТ «РУЧНИКУ» в адаптации!</li>
+                            <li>Нашли ВСЕ болевые точки — новые задачи в беклоге</li>
+                        </ul>
+                        <p style="margin-top: 15px; font-size: 24px;"><strong>Уже ДОСТУПНО:</strong></p>
+                        <ul class="feature-list">
+                            <li>Списки для программ адаптации? АВТОМАТИЧЕСКИ!</li>
+                            <li>Список новичков для практикума — ОДНА КНОПКА и готово!</li>
+                        </ul>
+                        <p style="margin-top: 15px; font-size: 24px;"><strong>СКОРО! СКОРО! СКОРО!</strong></p>
+                        <ul>
+                            <li>Ссылки-приглашения - МГНОВЕННО и без участия человека!</li>
+                        </ul>
+
+                        <p style="margin-top: 15px; font-style: italic; color: #00ffff;">🔜 Скоро: новички сами
+                            записываются на практикумы! Только запланируйте практикум в ОУ!</p>
+                    </div>
+                </div>
+                <div class="info-bar">
+                    <p><strong>🎁 БОНУС:</strong></p>
+                    <p style="margin-top: 15px; font-style: italic;">Уже в разработке: функция самостоятельной записи на
+                        практикумы — ещё МЕНЬШЕ работы для вас!</p>
+                </div>
+
+                <!-- ===== ЛОТ 4: Video SpellChecker ===== -->
+                <div class="lot-title" data-text="Video SpellChecker">Video SpellChecker</div>
+                <div class="top-section">
+                    <div class="card">
+                        <div class="card-header">
+                            <span class="card-lot">Лот</span>
+                            <span class="card-number">664</span>
+                        </div>
+                        <div class="card-content-box">
+                            <video autoplay muted loop playsinline onloadeddata="this.playbackRate = 4.0;">
+                                <source src="./vsc demo.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="card-footer">
+                            <span class="card-footer-text">Цена в у.е.</span>
+                            <span class="card-price">234</span>
+                        </div>
+                    </div>
+
+
+                    <div class="right-content">
+                        <h1 data-text="Устали искать опечатки в титрах?!">Устали искать опечатки в титрах?! Часами
+                            смотрите видео, а потом ВСЁ РАВНО находят ошибки?!</h1>
+
+                        <p style="margin-top: 15px; font-size: 28px; color: #00ff00;">ЗАБУДЬТЕ ОБ ЭТОМ КОШМАРЕ!</p>
+
+                        <p style="margin-top: 15px; font-size: 24px;"><strong>Смотрите, что умеет эта малышка:</strong>
+                        </p>
+                        <ul class="feature-list" style="font-size: 24px;">
+                            <li>Работает и на Windows, и на Alt — ВЕЗДЕ!</li>
+                            <li>Русский И английский — проверяет ОБА языка!</li>
+                            <li>Свой словарь исключений — добавьте термины компании!</li>
+                        </ul>
+
+                        <p style="margin-top: 20px; color: #ffff00; font-size: 24px;">Ошибки в титрах? Это в прошлом!
+                        </p>
+
+                    </div>
+                </div>
+
+                <!-- ===== ЛОТ 5: Конструктор рассылок ===== -->
+                <div class="lot-title" data-text="Конструктор рассылок">Конструктор рассылок</div>
+                <div class="top-section">
+                    <div class="card">
+                        <div class="card-header">
+                            <span class="card-lot">Лот</span>
+                            <span class="card-number">192</span>
+                        </div>
+                        <div class="card-content-box">
+                            <video autoplay muted loop playsinline onloadeddata="this.playbackRate = 4.0;">
+                                <source src="./20251222-0801-03.0410885.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="card-footer">
+                            <span class="card-footer-text">Время</span>
+                            <span class="card-price">5 мин</span>
+                        </div>
+                    </div>
+
+
+                    <div class="right-content">
+                        <h1 data-text="Красивые письма БЕЗ МУЧЕНИЙ!">Красивые письма БЕЗ МУЧЕНИЙ!</h1>
+                        <p style="font-size: 24px;">Надоело возиться с табличной вёрсткой?! Лезть в Figma ради каждой
+                            картинки?! Собирать блоки ВРУЧНУЮ?!</p>
+
+                        <p style="margin-top: 15px; font-size: 28px; color: #00ff00;"><strong>МЫ ВСЁ РЕШИЛИ ЗА
+                                ВАС!</strong></p>
+
+                        <p style="margin-top: 15px; font-size: 24px;"><strong>Как это работает? ЭЛЕМЕНТАРНО!</strong>
+                        </p>
+                        <ol class="feature-list" style="font-size: 24px;">
+                            <li>Открыли приложение — УЖЕ красиво!</li>
+                            <li>Выбрали шаблон или создали свой — за СЕКУНДЫ!</li>
+                            <li>Поменяли текст и картинки — ПРЯМО ТУТ!</li>
+                            <li>Нажали кнопку — письмо УЖЕ в Outlook!</li>
+                            <li>Проверили, вставили адреса — ОТПРАВИЛИ!</li>
+                        </ol>
+
+                        <p style="margin-top: 15px; color: #ffff00; font-size: 22px;">5 минут — и шедевр готов! Figma
+                            больше НЕ НУЖНА!</p>
+
+
+                    </div>
+                </div>
+
+                <!-- ===== ЛОТ 6: Конструктор тестов ===== -->
+                <div class="lot-title" data-text="Конструктор тестов">Конструктор тестов</div>
+                <div class="top-section">
+                    <div class="card">
+                        <div class="card-header">
+                            <span class="card-lot">Лот</span>
+                            <span class="card-number">274</span>
+                        </div>
+                        <div class="card-content-box">
+                            <video autoplay muted loop playsinline onloadeddata="this.playbackRate = 4.0;">
+                                <source src="./20251222-0742-51.3865649.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="card-footer">
+                            <span class="card-footer-text">Формат</span>
+                            <span class="card-price">SCORM</span>
+                        </div>
+                    </div>
+
+
+                    <div class="right-content">
+                        <h1 data-text="Тесты в ЛМС — это БОЛЬ?!">Тесты в ЛМС — это БОЛЬ?! Руки связаны?! Невозможно
+                            нормально проверить знания?!</h1>
+
+                        <p style="margin-top: 15px; font-size: 28px; color: #00ff00;">МЫ РАЗВЯЗЫВАЕМ ВАМ РУКИ!</p>
+
+                        <p style="margin-top: 15px; font-size: 24px;"><strong>Теперь вы МОЖЕТЕ:</strong></p>
+                        <ul class="feature-list" style="font-size: 24px;">
+                            <li>Создавать ЛЮБЫЕ тесты — БЫСТРО и без ограничений!</li>
+                            <li>Паковать их в SCORM — загружайте в LMS без лишних усилий!</li>
+                            <li>Совместимо с Онлайн-университетом — работает ВЕЗДЕ!</li>
+                            <li>Отдавать ДЕТАЛЬНУЮ обратную связь — тестируемый знает ВСЁ о результатах!</li>
+                            <li>Адаптивные механики тестирования - не только факт, но и УРОВЕНЬ владения компетенцией!
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+
+                <!-- ВИДЕО В СЕРЕДИНЕ -->
+                <section class="video-section" id="videoSection">
+                    <video muted loop playsinline id="midVideo">
+                        <source src="./6082ca70a3acf1.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-overlay"></div>
+                </section>
+
+                <!-- ===== ЛОТ 7: Другие боты ===== -->
+                <div class="lot-title" data-text="И ЭТО ЕЩЁ НЕ ВСЁ!">И ЭТО ЕЩЁ НЕ ВСЁ!</div>
+                <div class="top-section">
+                    <div class="card">
+                        <div class="card-header">
+                            <span class="card-lot">Лот</span>
+                            <span class="card-number">091</span>
+                        </div>
+                        <div class="card-content-box">
+                            <video autoplay muted loop playsinline onloadeddata="this.playbackRate = 4.0;">
+                                <source src="./Скринкаст_на_слайд_про_Школу_аналитика.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="card-footer">
+                            <span class="card-footer-text">Штук</span>
+                            <span class="card-price">4+</span>
+                        </div>
+                    </div>
+
+
+                    <div class="right-content">
+                        <h1 data-text="Новые боты УЖЕ РАБОТАЮТ!">Новые боты УЖЕ РАБОТАЮТ!</h1>
+
+                        <p style="font-size: 24px; margin: 25px 0; color: #ffff00;"><strong>🎯 Искусство переговоров +
+                                🚀 ИИ-Проводники 2.0</strong></p>
+                        <p style="font-size: 20px;">НОВЫЙ ФУНКЦИОНАЛ: взаимная проверка домашних заданий!</p>
+                        <p>Обучаемые проверяют ДРУГ ДРУГА — вы только наблюдаете за результатом!</p>
+
+                        <p style="font-size: 24px; margin: 35px 0 15px 0; color: #ffff00;"><strong>📊 Школа
+                                аналитика</strong></p>
+                        <p style="font-size: 20px;">ПОЛНЫЙ НАБОР возможностей в одном боте:</p>
+                        <ul class="feature-list " style="font-size: 20px;">
+                            <li>Peer-2-peer проверка домашних заданий — ученики учат ДРУГ ДРУГА!</li>
+                            <li>Букинг тайм-слотов — записывайся на встречи ПРЯМО В БОТЕ!</li>
+                            <li>Чек-листы в формате мини-приложений — ничего НЕ ЗАБУДЕШЬ!</li>
+                        </ul>
+
+                    </div>
+                </div>
+
+                <!-- ===== ЛОТ 8: Робот отчетов ===== -->
+                <div class="lot-title" data-text="Робот отчетов">Робот отчетов</div>
+                <div class="top-section">
+                    <div class="card">
+                        <div class="card-header">
+                            <span class="card-lot">Лот</span>
+                            <span class="card-number">911</span>
+                        </div>
+                        <div class="card-content-box">
+                            <video autoplay muted loop playsinline onloadeddata="this.playbackRate = 4.0;">
+                                <source src="./Робт в ОУ.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="card-footer">
+                            <span class="card-footer-text">Время</span>
+                            <span class="card-price">По расп.</span>
+                        </div>
+                    </div>
+
+
+                    <div class="right-content">
+                        <h1 data-text="ДОСТАЛО заказывать одни и те же выгрузки?!">ДОСТАЛО заказывать одни и те же
+                            выгрузки?! Крутить
+                            Excel КАЖДЫЙ РАЗ?!</h1>
+
+                        <p style="margin-top: 15px; font-size: 28px; color: #00ff00;">РОБОТ СДЕЛАЕТ ЭТО ЗА ВАС!</p>
+
+                        <p style="margin-top: 15px;"><strong>Как работает эта МАГИЯ:</strong></p>
+                        <ul class="feature-list">
+                            <li>Сам заказывает выгрузку ПО РАСПИСАНИЮ — вы даже не вспоминаете!</li>
+                            <li>Сам обрабатывает данные — ИМЕННО как вам нужно!</li>
+                            <li>Сам отправляет результат — на почту или в папку!</li>
+                        </ul>
+
+                        <p style="margin-top: 15px; font-style: italic; color: #00ffff;">🔜 Скоро: данные НАПРЯМУЮ из
+                            ЦХД — ещё быстрее!</p>
+
+
+                    </div>
+                </div>
+                <div class="info-bar">
+                    <p><strong>🎁 БОНУС НА ГОРИЗОНТЕ:</strong></p>
+                    <p style="margin-top: 15px; font-style: italic;">Уже скоро — прямое подключение к ЦХД! Данные будут
+                        лететь к вам СО СКОРОСТЬЮ СВЕТА!</p>
+                </div>>
+
+                <!-- ===== ЛОТ 9: PDF Шаблоны ===== -->
+                <div class="lot-title" data-text="Автоматическое заполнение PDF-шаблонов">Автоматическое
+                    заполнение PDF-шаблонов</div>
+                <div class="top-section">
+                    <div class="card">
+                        <div class="card-header">
+                            <span class="card-lot">Лот</span>
+                            <span class="card-number">608</span>
+                        </div>
+                        <div class="card-content-box">
+                            <video autoplay muted loop playsinline onloadeddata="this.playbackRate = 4.0;">
+                                <source src="./Запись экрана 2025-12-26 124705.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="card-footer">
+                            <span class="card-footer-text">Сертификаты</span>
+                            <span class="card-price">∞</span>
+                        </div>
+                    </div>
+
+
+                    <div class="right-content">
+                        <h1 data-text="Надо сделать 100 сертификатов?!">Надо сделать 100 сертификатов?! И КАЖДЫЙ
+                            заполнять ВРУЧНУЮ?!</h1>
+
+                        <p style="margin-top: 15px; font-size: 28px; color: #00ff00;">ХВАТИТ МУЧИТЬСЯ!</p>
+
+                        <p style="margin-top: 15px;"><strong>Смотрите, как ПРОСТО:</strong></p>
+                        <ul class="feature-list">
+                            <li>Берёте ЛЮБОЙ пустой PDF-шаблон</li>
+                            <li>Берёте Excel со списком людей — всего 2 столбца!</li>
+                            <li>Настраиваете формат текста — ОДИН РАЗ!</li>
+                            <li>Жмёте «СГЕНЕРИРОВАТЬ»</li>
+                            <li>ПОЛУЧАЕТЕ ВСЕ СЕРТИФИКАТЫ СРАЗУ!</li>
+                        </ul>
+
+                        <div class="ribbon" style="margin-left: 100px;">Настройка — 1 раз!</div>
+
+                    </div>
+                </div>
+
+                <!-- ФИНАЛЬНОЕ ПРЕДЛОЖЕНИЕ -->
+                <div class="contacts-section">
+                    <div class="contacts-title">
+                        МЫ ЭКОНОМИМ ВАШЕ ВРЕМЯ <span class="stamp">И НЕРВЫ!</span>
+                    </div>
+
+                    <div style="font-size: 28px; margin: 30px 0; animation: flicker 2.5s ease-in-out infinite;">
+                        Не упустите свой шанс! Выберите способ связи:
+                    </div>
+
+                    <a href="https://t.me/evolzubkov" class="contact-info" target="_blank">📱 Telegram — отвечаем
+                        МГНОВЕННО!</a>
+                    <br>
+                    <a href="file:///C:/cdn-cgi/l/email-protection#7e1b061f130e121b3e1b131f1712501d1113"
+                        class="contact-info">📧 Email — для официальных запросов</a>
+
+                    <br><br>
+
+                    <a href="file:///C:/Users/%D0%92%D0%BB%D0%B0%D0%B4/Downloads/index_styled%20(1).html#"
+                        class="order-button" onclick="handleOrderClick(event)">🛒 ХОЧУ ЗАКАЗАТЬ!</a>
+
+                    <div class="final-screen" style="margin-top: 40px;" data-text="ЗВОНИТЕ ПРЯМО СЕЙЧАС!!!">
+                        ЗВОНИТЕ ПРЯМО СЕЙЧАС!!!
                     </div>
                 </div>
             </div>
 
-            <!-- ВИДЕО В СЕРЕДИНЕ -->
-            <section class="video-section" id="videoSection">
-                <video muted playsinline id="midVideo">
-                    <source src="./6082ca70a3acf.mp4" type="video/mp4">
-                </video>
-                <div class="video-overlay"></div>
-            </section>
+            <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+            <script>
+                // АВТОВОСПРОИЗВЕДЕНИЕ ВИДЕО В СЕРЕДИНЕ
+                const videoSection = document.getElementById('videoSection');
+                const midVideo = document.getElementById('midVideo');
 
-            <!-- ДРУГИЕ БОТЫ -->
-            <div class="lot">
-                <div class="lot-number">⑦</div>
-                <div class="lot-title" data-text="ДРУГИЕ БОТЫ">ДРУГИЕ БОТЫ</div>
-                <div class="lot-content">
-                    <p><strong>Искусство Переговоров (B2B)</strong> - теория и практика переговорных техник</p>
-                    <p style="margin-top: 15px;"><strong>Программа ИИ-Проводники 2.0</strong> - peer-2-peer проверка
-                        домашних заданий</p>
-                    <p style="margin-top: 15px;"><strong>Школа аналитика</strong> - от новичка к аналитику с peer-review
-                    </p>
-                    <p style="margin-top: 15px;"><strong>Букинг + Чек-листы</strong> - мини-приложения для встреч и
-                        контроля
-                    </p>
-                </div>
-            </div>
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            midVideo.play();
+                        } else {
+                            midVideo.pause();
+                        }
+                    });
+                }, { threshold: 0.5 });
 
-            <!-- РОБОТ ОТЧЕТОВ -->
-            <div class="lot">
-                <div class="lot-number">⑧</div>
-                <div class="lot-title" data-text="Робот Отчетов">Робот Отчетов</div>
-                <div class="lot-content">
-                    <p><strong>Автоматизируем выгрузку отчетов!</strong></p>
-                    <p style="margin-top: 15px;">Задолбались постоянно заказывать одинаковые выгрузки из ОУ и крутить их
-                        в
-                        Excel?</p>
-                    <p style="margin-top: 15px;">По расписанию заказ выгрузки</p>
-                    <p>Обработка к нужному формату</p>
-                    <p>Отправка на адрес или в папку</p>
-                    <p style="margin-top: 15px; font-style: italic;">Скоро: получение данных напрямую из ЦХД!</p>
-                </div>
-            </div>
+                observer.observe(videoSection);
 
-            <!-- PDF ГЕНЕРАТОР -->
-            <div class="lot">
-                <div class="lot-number">⑨</div>
-                <div class="lot-title" data-text="PDF Шаблоны">PDF Шаблоны</div>
-                <div class="lot-content">
-                    <p><strong>Генерируй тысячи сертификатов за раз!</strong></p>
-                    <p style="margin-top: 15px;">Нужно много сертификатов на разных людей? Есть Excel и шаблон PDF?</p>
-                    <p style="margin-top: 15px;">Используй любой PDF шаблон</p>
-                    <p>Загрузи Excel с данными</p>
-                    <p>Настрой позицию и цвет текста</p>
-                    <p>Генерируй все сертификаты одной кнопкой!</p>
-                </div>
-            </div>
+                // ВКЛЮЧЕНИЕ ЗВУКА ПО КЛИКУ
+                introVideo.addEventListener('click', function () {
+                    this.muted = !this.muted;
+                });
 
-            <!-- ФИНАЛЬНОЕ ПРЕДЛОЖЕНИЕ -->
-            <div class="contacts-section">
-                <div class="contacts-title" data-text="МЫ ЭКОНОМИМ ВАШЕ ВРЕМЯ И НЕРВЫ!">МЫ ЭКОНОМИМ ВАШЕ ВРЕМЯ И НЕРВЫ!
-                </div>
+                midVideo.addEventListener('click', function () {
+                    this.muted = !this.muted;
+                });
 
-                <div style="font-size: 28px; margin: 30px 0; animation: flicker 2.5s ease-in-out infinite;">
-                    Выберите способ связи:
-                </div>
+                // ОБРАБОТКА КНОПКИ ЗАКАЗА
+                function handleOrderClick(event) {
+                    event.preventDefault();
+                    alert('Спасибо за интерес! Свяжитесь с нами через Telegram или Email');
+                }
 
-                <a href="https://t.me/your_telegram" class="contact-info" target="_blank">
-                    Telegram
-                </a>
-                <br>
-                <a href="/cdn-cgi/l/email-protection#770e18020528121a161e1b37120f161a071b125914181a"
-                    class="contact-info">
-                    Email
-                </a>
+                // ИНТЕРАКТИВНЫЕ ЭФФЕКТЫ
+                document.querySelectorAll('.lot').forEach(lot => {
+                    lot.addEventListener('mouseenter', function () {
+                        this.style.filter = 'brightness(1.1) contrast(1.2)';
+                    });
+                    lot.addEventListener('mouseleave', function () {
+                        this.style.filter = 'brightness(1) contrast(1)';
+                    });
+                });
 
-                <br><br>
+                // НАВИГАЦИЯ ПО ЛОТАМ ПРОБЕЛОМ
+                const lotSections = document.querySelectorAll('.lot-title');
+                let currentLotIndex = -1;
 
-                <a href="#" class="order-button" onclick="handleOrderClick(event)">
-                    СДЕЛАТЬ ЗАКАЗ
-                </a>
+                document.addEventListener('keydown', function (e) {
+                    // Пробел — следующий лот
+                    if (e.code === 'Space') {
+                        e.preventDefault();
+                        currentLotIndex++;
+                        if (currentLotIndex >= lotSections.length) {
+                            currentLotIndex = 0; // Вернуться к первому
+                        }
+                        lotSections[currentLotIndex].scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
 
-                <div class="final-screen" style="margin-top: 40px;" data-text="ЗВОНИТЕ ПРЯМО СЕЙЧАС!!!">
-                    ЗВОНИТЕ ПРЯМО СЕЙЧАС!!!
-                </div>
-            </div>
-        </div>
-
-        <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-        <script>
-            // АВТОВОСПРОИЗВЕДЕНИЕ ВИДЕО В СЕРЕДИНЕ
-            const videoSection = document.getElementById('videoSection');
-            const midVideo = document.getElementById('midVideo');
-
-            const observerOptions = {
-                threshold: 0.5
-            };
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        midVideo.play();
-                    } else {
-                        midVideo.pause();
+                    // Shift+Пробел — предыдущий лот
+                    if (e.code === 'Space' && e.shiftKey) {
+                        e.preventDefault();
+                        currentLotIndex--;
+                        if (currentLotIndex < 0) {
+                            currentLotIndex = lotSections.length - 1; // К последнему
+                        }
+                        lotSections[currentLotIndex].scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
                     }
                 });
-            }, observerOptions);
+                // РАЗВОРОТ КАРТОЧКИ НА ВЕСЬ ЭКРАН ПО КЛИКУ
+                function closeFullscreenCard() {
+                    const expanded = document.querySelector('.card.fullscreen');
+                    const overlay = document.querySelector('.fullscreen-overlay');
+                    const hint = document.querySelector('.fullscreen-hint');
 
-            observer.observe(videoSection);
+                    if (expanded) {
+                        expanded.classList.remove('fullscreen');
+                        document.body.style.overflow = '';
+                    }
+                    if (overlay) overlay.remove();
+                    if (hint) hint.remove();
+                }
 
-            // ОБРАБОТКА КНОПКИ ЗАКАЗА
-            function handleOrderClick(event) {
-                event.preventDefault();
-                // Заменить на реальную ссылку
-                alert('Спасибо за интерес! Свяжитесь с нами через Telegram или Email');
-            }
+                document.querySelectorAll('.card').forEach(card => {
+                    card.addEventListener('click', function (e) {
+                        e.stopPropagation();
 
-            // ИНТЕРАКТИВНЫЕ ЭФФЕКТЫ - убрали случайные глитчи
-            const lots = document.querySelectorAll('.lot');
-            lots.forEach((lot, index) => {
-                // Интерактивный эффект при наведении
-                lot.addEventListener('mouseenter', function () {
-                    this.style.filter = 'brightness(1.1) contrast(1.2)';
+                        if (this.classList.contains('fullscreen')) {
+                            closeFullscreenCard();
+                        } else {
+                            // Закрыть другие
+                            closeFullscreenCard();
+
+                            // Добавить затемнение
+                            const overlay = document.createElement('div');
+                            overlay.className = 'fullscreen-overlay';
+                            overlay.addEventListener('click', closeFullscreenCard);
+                            document.body.appendChild(overlay);
+
+                            // Добавить подсказку
+                            const hint = document.createElement('div');
+                            hint.className = 'fullscreen-hint';
+                            hint.textContent = 'Нажмите ESC или кликните чтобы закрыть';
+                            document.body.appendChild(hint);
+
+                            // Развернуть карточку
+                            this.classList.add('fullscreen');
+                            document.body.style.overflow = 'hidden';
+                        }
+                    });
                 });
 
-                lot.addEventListener('mouseleave', function () {
-                    this.style.filter = 'brightness(1) contrast(1)';
-                });
-            });
+                // В обработчике keydown добавлено:
+                if (e.code === 'Escape') {
+                    closeFullscreenCard();
+                }
+                
+            </script>
+        </div>
+</body>
 
-            // РАДИОАКТИВНЫЙ ЭФФЕКТ НЕКОТОРЫХ ЭЛЕМЕНТОВ
-            document.querySelectorAll('.lot-price').forEach(price => {
-                price.addEventListener('mouseover', function () {
-                    this.style.color = '#ff00ff';
-                    this.style.textShadow = '0 0 20px #ff00ff, 2px 2px 0 #ff0000, 4px 4px 0 rgba(0, 0, 0, 0.8)';
-                });
-
-                price.addEventListener('mouseout', function () {
-                    this.style.color = '#ffff00';
-                    this.style.textShadow = '2px 2px 4px rgba(0, 0, 0, 0.9)';
-                });
-            });
-        </script>
+</html>
